@@ -108,8 +108,9 @@
  .about__body.second {
      padding-top: 0;
 }
- .second .about__item {
+.second .about__item {
      text-align: center;
+     font-size: 15px;
 }
  .about__item {
      padding: 2rem 1rem;
