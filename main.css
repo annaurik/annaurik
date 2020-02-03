@@ -1,5 +1,5 @@
 .thumbnail {
-    max-width: 190px;
+    max-width: 290px;
   margin: 1em;
   float: left;
       cursor: zoom-in;
@@ -238,7 +238,7 @@ body {
 }
 /*Gallery Photography*/
 .gallery__wrapper {
-	width: 50%;
+	width: 60%;
      height: fit-content;
      /*! display: flex; */
      padding-top: 1rem;
