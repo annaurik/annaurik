@@ -202,7 +202,7 @@
      text-align: center;
 }
  .gallery {
-     width: 1320px;
+     width: auto;
      height: auto;
      display: flex;
      flex-wrap: wrap;
