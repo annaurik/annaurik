@@ -192,3 +192,44 @@
              data-full="">
       </figure>
       <figure class="tall">
+        <img src="content_ph_2.webp" alt="" loading="lazy" decoding="async"
+             data-full="">
+      </figure>
+    </div>
+
+    <ol class="list">
+      <li class="li">
+        <div class="num">03</div>
+        <div class="block">
+          <h3>Music</h3>
+          <p>Australian music doc &amp; album visuals</p>
+        </div>
+      </li>
+      <li class="li">
+        <div class="num">04</div>
+        <div class="block">
+          <h3>Portraits</h3>
+          <p>UK based musicians, actors</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+</main>
+
+<!-- Optional: fill data-full with your hi-res URLs to swap them in once loaded -->
+<script>
+  document.querySelectorAll('img[data-full]').forEach(img => {
+    const full = img.getAttribute('data-full');
+    if (!full) return; // keep placeholder if no hi-res provided yet
+    const hi = new Image();
+    hi.src = full;
+    hi.decoding = 'async';
+    hi.onload = () => {
+      img.style.filter = 'none';
+      img.style.transform = 'none';
+      img.src = full;
+    };
+  });
+</script>
+</body>
+</html>
