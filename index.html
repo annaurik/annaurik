@@ -41,6 +41,24 @@
     .hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
     .hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.35) 100%)}
     .hero__content{position:relative;z-index:2;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;padding:clamp(12px,4vw,40px)}
+/* Link styled exactly like the brand headline */
+.brand--link{
+  display:block;                 /* puts it on a new line under Anna Urik */
+  text-decoration:none;
+  color: var(--accent);          /* same red */
+  margin-top:.15rem;             /* tight spacing under the H1 */
+}
+.brand--link:hover{
+  opacity:.9;
+  text-decoration: underline;
+  text-underline-offset:.15em;
+}
+.name .to-content{
+  display:block;
+  margin-top:.2rem;       /* space under ANNA URIK */
+  text-transform:uppercase;
+  font-weight:inherit;    /* inherits .name’s 900 weight */
+}
 
     /* Big title */
     .hero h1{
@@ -125,8 +143,11 @@
             <div>Videographer</div>
           </div>
           <div class="divider" role="presentation"></div>
-          <div class="name"><a href="/about">ANNA URIK</a></div>
-        </div>
+<div class="name">
+  <a href="/about">ANNA URIK</a>
+  <a class="to-content" href="/content" aria-label="Go to Content">CONTENT</a>
+</div>
+
 
         <div></div> <!-- flexible spacer -->
 
