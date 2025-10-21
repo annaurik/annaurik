@@ -6,11 +6,11 @@
   <title>Anna Urik | Photographer & Videographer</title>
   <style>
     :root{
-      --bg:#0e1114;        /* page background */
-      --fg:#f4f1ea;        /* light text */
-      --muted:#d7d2c8;     /* secondary text */
-      --accent:#e0332f;    /* red heading */
-      --rule:#cfc7bb;      /* divider */
+      --bg:#0e1114;
+      --fg:#f4f1ea;
+      --muted:#d7d2c8;
+      --accent:#e0332f;
+      --rule:#cfc7bb;
     }
 
     *{box-sizing:border-box}
@@ -26,28 +26,26 @@
     a:hover{text-decoration:underline;text-underline-offset:4px}
     a:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
 
-    /* --- Container (no outer frame) --- */
     .wrap{max-width:none;margin:0;padding:0}
 
-    /* --- HERO (full-bleed, no rounded corners) --- */
     .hero{
       position:relative;
-      border-radius:0;             /* no rounded frame */
-      overflow:hidden;             /* contain overlay/image */
-      min-height:100vh;            /* fill the viewport height */
+      border-radius:0;
+      overflow:hidden;
+      min-height:100vh;
       display:grid;
-      container-type:inline-size;  /* enables cqw-based fluid title */
+      container-type:inline-size;
     }
     .hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
     .hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.35) 100%)}
     .hero__content{position:relative;z-index:2;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;padding:clamp(12px,4vw,40px)}
 
-.name .to-content{
-  display:block;
-  margin-top:.2rem;       /* space under ANNA URIK */
-  text-transform:uppercase;
-  font-weight:inherit;    /* inherits .name’s 900 weight */
-}
+    .name .to-content{
+      display:block;
+      margin-top:.2rem;       /* space under ANNA URIK */
+      text-transform:uppercase;
+      font-weight:inherit;    /* inherits .name’s 900 weight */
+    }
 
     /* Big title */
     .hero h1{
@@ -57,13 +55,12 @@
       color:var(--accent);
       line-height:.9;
       width:100%;
-      /* Fallback: viewport-based fluid type */
       font-size:clamp(44px,12vw,220px);
       text-wrap:balance;
     }
     .hero h1 a{display:inline-block}
-    @media (min-width:768px){ .hero h1{font-size:clamp(72px,10vw,260px)} }      /* desktop scaling */
-    @media (min-width:1600px){ .hero h1{font-size:clamp(120px,8vw,320px)} }     /* large desktop */
+    @media (min-width:768px){ .hero h1{font-size:clamp(72px,10vw,260px)} }
+    @media (min-width:1600px){ .hero h1{font-size:clamp(120px,8vw,320px)} }
 
     /* Row with roles • divider • name */
     .meta-row{display:grid;grid-template-columns:1fr;align-items:center;gap:12px;margin-top:8px}
@@ -95,22 +92,14 @@
       .ig{font-size:18px}
       .tagline{max-width:62ch;font-size:22px}
     }
-      .tagline{max-width:62ch;font-size:22px}
+
+    @media (max-width:480px){
+      /* small-screen tweaks if needed */
     }
 
-    /* Mobile-first tweak for very small screens */
-    @media (max-width:480px){
-      /* Full-bleed hero remains 100vh/dvh on small screens */
-    }
-    }
-  
-    /* Container-query override for even better scaling relative to the card width */
     @supports (font-size: clamp(1rem, 10cqw, 20rem)){
-      /* Roughly keeps a 9–10 character word inside the container */
       .hero h1{font-size:clamp(36px,9cqw,300px)}
     }
-  
-    /* Use dynamic viewport units where supported to avoid bottom gaps on mobile */
     @supports (height: 100dvh) {
       .hero{ min-height:100dvh; }
     }
@@ -119,7 +108,6 @@
 <body>
   <div class="wrap">
     <section class="hero" aria-label="Portfolio hero">
-      <!-- Replace src with your hero image URL -->
       <img class="hero__bg" src="homepage.webp" alt="Background image placeholder" />
       <div class="hero__overlay" aria-hidden="true"></div>
 
@@ -132,13 +120,13 @@
             <div>Videographer</div>
           </div>
           <div class="divider" role="presentation"></div>
-<div class="name">
-  <a href="/about">ANNA URIK</a>
-  <a class="to-content" href="/content" aria-label="Go to Content">CONTENT</a>
-</div>
+          <div class="name">
+            <a href="/about">ANNA URIK</a>
+            <a class="to-content" href="/content" aria-label="Go to Content">CONTENT</a>
+          </div>
+        </div> <!-- ✅ close .meta-row -->
 
-
-        <div></div> <!-- flexible spacer -->
+        <div></div> <!-- flexible spacer (row 3 = 1fr) pushes footer down -->
 
         <div class="foot">
           <div class="ig">IG: <a href="https://www.instagram.com/anna.urik/?hl=en" aria-label="Instagram - anna.urik">anna.urik</a></div>
