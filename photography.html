@@ -1,97 +1,194 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-	<title>Anna Urik - Photographer and Filmmaker</title>
-	<meta name="description" content="Anna Urik is a photographer and filmmaker based in London, United Kingdom. Her projects explore the worlds of fashion, music, and humanitarianism." />
-	<meta name="keywords" content="Anna Urik, Photography, Film, Photographer, Filmmaker, London, Prague, Photoshoot, Videos">
- 	<meta name="author" content="Anna Urik">
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta property="og:title" content="Anna Urik" />
-	<meta property="og:type" content="article" />
-	<meta property="og:url" content="http://www.annaurik.com/" />
-	<meta property="og:image" content="http://www.annaurik.com/homepage.jpg" />
-	<meta property="og:description" content="Anna Urik is a photographer and filmmaker based in London." />
-	<link rel="stylesheet" href="main.css">
-	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lato:100,300&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Content</title>
+  <meta name="description" content="Work index — theatre, fashion, music, portraits." />
+  <!-- Preload tiny placeholders -->
+  <link rel="preload" as="image" href="content_ph_1.webp">
+  <link rel="preload" as="image" href="content_ph_2.webp">
+  <link rel="preload" as="image" href="content_ph_3.webp">
+  <link rel="preload" as="image" href="content_ph_4.webp">
+  <style>
+    :root{
+      --cream: #F6F2E2;
+      --ink: #171717;
+      --muted: #2d2d2dcc;
+      --accent: #D7302E;   /* red headline */
+      --hair: #00000020;
+      --maxw: 1280px;
+    }
+    *{ box-sizing: border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      background: var(--cream);
+      color: var(--ink);
+      font: 400 16px/1.55 system-ui, -apple-system, "Segoe UI", Inter, Arial, sans-serif;
+    }
+
+    /* HOME pill (uppercase; no icon) */
+    .back-home{
+      position: fixed; top:16px; left:16px; z-index:9999;
+      display:inline-flex; align-items:center;
+      padding:.55rem .9rem; border-radius:999px;
+      background:#00000080; color:white; text-decoration:none;
+      font-weight:700; text-transform:uppercase; letter-spacing:.02em;
+      border:1px solid #ffffff22; backdrop-filter: blur(6px);
+      box-shadow:0 1px 2px #00000066;
+    }
+    .back-home:hover{ background:#000000b0; }
+    @media (max-width: 980px){ .back-home{ top:12px; left:12px; padding:.5rem .75rem; } }
+
+    /* ===== Page layout ===== */
+    .wrap{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: clamp(56px,6vw,80px) clamp(16px,4vw,32px);
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: clamp(20px, 4vw, 48px);
+    }
+    @media (max-width: 1020px){
+      .wrap{ grid-template-columns: 1fr; }
+    }
+
+    /* Left column */
+    .title{
+      font-weight: 900;
+      color: var(--accent);
+      font-size: clamp(2.4rem, 9vw, 6rem);
+      letter-spacing: .01em;
+      line-height: .95;
+      margin: 0 0 clamp(16px, 3vw, 24px);
+    }
+    .list{
+      margin: 0 0 clamp(20px, 4vw, 40px);
+      padding: 0;
+      list-style: none;
+      max-width: 660px;
+    }
+    .li{
+      padding: 22px 0;
+      border-top: 2px solid var(--hair);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: baseline;
+    }
+    .li:last-child{ border-bottom: 2px solid var(--hair); }
+    .num{
+      font-weight: 900;
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+      letter-spacing: .02em;
+    }
+    .block h3{
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    }
+    .block p{
+      margin: .2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(.95rem, 1.3vw, 1.05rem);
+    }
+
+    /* Left column: bottom thumbs */
+    .thumb-row{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(12px, 2.4vw, 24px);
+      margin-top: clamp(16px, 3vw, 24px);
+      max-width: 720px;
+    }
+    .tile{
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #ddd;
+      aspect-ratio: 1/1; /* square-ish tiles like the comp */
+    }
+    .tile img{
+      position: absolute; inset:0;
+      width:100%; height:100%;
+      object-fit: cover; object-position: center;
+      filter: blur(6px);
+      transform: scale(1.05);
+    }
+
+    /* Right column: two tall images, then list items 03/04 */
+    .right{
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: clamp(20px, 3vw, 32px);
+    }
+    .right-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(12px, 2.4vw, 24px);
+      align-items: start;
+    }
+    .tall{
+      position: relative; overflow: hidden;
+      border-radius: 10px; aspect-ratio: 3/4;
+      background: #ddd;
+    }
+    .tall img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter: blur(6px); transform: scale(1.05); }
+
+    .right .list{ margin-top: 0; }
+
+    @media (prefers-reduced-motion: reduce){
+      .tile img, .tall img{ filter: blur(4px); transform: none; }
+    }
+  </style>
 </head>
-
 <body>
-	<div class="top__bar">
-		<div class="logo__name"> <a href="index">ANNA URIK</a>
-		</div>
-		<ul class="menu__bar">
-			<a href="photography">
-				<li class="menu__item">Photography</li>
-			</a>
-			<a href="film">
-				<li class="menu__item">Film</li>
-			</a>
-			<a href="about">
-				<li class="menu__item">About</li>
-			</a>
-			<a href="https://www.instagram.com/anna.urik/" target="_blank">
-				<li class="menu__item insta">
-					<img class="instagram" src="instagram.png" title="Instagram" alt="Instagram">
-				</li>
-			</a>
-		</ul>
-	</div>
-	<div class="gallery__wrapper">
-		<div class="gallery">
-			<div class="gallery__item">
-				<a href="/lynyer">
-					<img class="gallery__img" src="hub-1.jpg">
-				</a>
-				<h1 class="photo_text">LYNYER</h1>
-			</div>
-			<div class="gallery__item">
-				<a href="/ariana">
-					<img class="gallery__img" src="shoot-five/img-7.jpg">
-				</a>
-				<h1 class="photo_text">ARI ANA - Music Video</h1>
-			</div>
-						<div class="gallery__item">
-				<a href="/florian">
-					<img class="gallery__img" src="shoot-seven/img-3.jpg">
-				</a>
-				<h1 class="photo_text">FLORIAN</h1>
-			</div>
-			<div class="gallery__item">
-				<a href="/kana">
-					<img class="gallery__img" src="shoot-one/img-4.jpg">
-				</a>
-				<h1 class="photo_text">KANA LONDON</h1>
-			</div>
-			<div class="gallery__item">
-				<a href="/1883-magazine">
-					<img class="gallery__img" src="shoot-four/img-5.jpg">
-				</a>
-				<h1 class="photo_text">1883 MAGAZINE</h1>
-			</div>
-			<div class="gallery__item">
-				<a href="/adagio">
-					<img class="gallery__img" src="shoot-two/img-1.jpg">
-				</a>
-				<h1 class="photo_text">ADAGIO</h1>
-			</div>
-			<div class="gallery__item">
-				<a href="/painting-pictures">
-					<img class="gallery__img" src="shoot-three/img-18.jpg">
-				</a>
-				<h1 class="photo_text">PAINTING PICTURES</h1>
-			</div>
-		</div>
-	</div>
-	<br>
-	<br>
-		<a href="#top">
-		<div class="backtop">
-			<img src="arrow-up.png">
-		</div>
-	</a>
-	<div class="footer">Copyright © 2019 Anna Urik . Website by Pascal Ebner . All Rights Reserved.</div>
-</body>
 
-</html>
+<a class="back-home" href="/" aria-label="Home">HOME</a>
+
+<main class="wrap">
+  <!-- LEFT COLUMN -->
+  <section>
+    <h1 class="title">CONTENT</h1>
+
+    <ol class="list">
+      <li class="li">
+        <div class="num">01</div>
+        <div class="block">
+          <h3>Theatre</h3>
+          <p>Cirk La Putyka &amp; Jatka78</p>
+        </div>
+      </li>
+      <li class="li">
+        <div class="num">02</div>
+        <div class="block">
+          <h3>Fashion</h3>
+          <p>UK brands &amp; designers</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="thumb-row">
+      <!-- Bottom left tiles -->
+      <figure class="tile">
+        <img src="content_ph_3.webp" alt="" loading="lazy" decoding="async"
+             data-full="">
+      </figure>
+      <figure class="tile">
+        <img src="content_ph_4.webp" alt="" loading="lazy" decoding="async"
+             data-full="">
+      </figure>
+    </div>
+  </section>
+
+  <!-- RIGHT COLUMN -->
+  <section class="right">
+    <div class="right-grid">
+      <figure class="tall">
+        <img src="content_ph_1.webp" alt="" loading="lazy" decoding="async"
+             data-full="">
+      </figure>
+      <figure class="tall">
