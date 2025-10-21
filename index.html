@@ -26,26 +26,37 @@
     a:hover{text-decoration:underline;text-underline-offset:4px}
     a:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
 
-    /* --- Container --- */
-    .wrap{max-width:1280px;margin:0 auto;padding:24px}
-    @media (min-width:1024px){ .wrap{max-width:1440px;padding:28px} }           /* desktop */
-    @media (min-width:1600px){ .wrap{max-width:1720px;padding:32px} }           /* large desktop */
+    /* --- Container (no outer frame) --- */
+    .wrap{max-width:none;margin:0;padding:0}
 
-    /* --- HERO --- */
-    .hero{position:relative;border-radius:16px;overflow:hidden;min-height:68vh;display:grid;container-type:inline-sizeposition:relative;border-radius:16px;overflow:hidden;min-height:68vh;display:grid}
-    .hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    /* --- HERO (full-bleed, no rounded corners) --- */
+    .hero{
+      position:relative;
+      border-radius:0;             /* no rounded frame */
+      overflow:hidden;             /* contain overlay/image */
+      min-height:68vh;
+      display:grid;
+      container-type:inline-size;  /* enables cqw-based fluid title */
+    }
+    .hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
     .hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.35) 100%)}
-    .hero__content{position:relative;z-index:2;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;padding:clamp(16px,4vw,40px)}
+    .hero__content{position:relative;z-index:2;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;padding:clamp(12px,4vw,40px)}
 
     /* Big title */
-    .hero h1{margin:0;font-weight:900;letter-spacing:.01em;color:var(--accent);line-height:.9;width:100%;
+    .hero h1{
+      margin:0;
+      font-weight:900;
+      letter-spacing:.01em;
+      color:var(--accent);
+      line-height:.9;
+      width:100%;
       /* Fallback: viewport-based fluid type */
       font-size:clamp(44px,12vw,220px);
       text-wrap:balance;
     }
     .hero h1 a{display:inline-block}
     @media (min-width:768px){ .hero h1{font-size:clamp(72px,10vw,260px)} }      /* desktop scaling */
-    @media (min-width:1600px){ .hero h1{font-size:clamp(120px,8vw,320px)} }    /* large desktop */
+    @media (min-width:1600px){ .hero h1{font-size:clamp(120px,8vw,320px)} }     /* large desktop */
 
     /* Row with roles • divider • name */
     .meta-row{display:grid;grid-template-columns:1fr;align-items:center;gap:12px;margin-top:8px}
@@ -74,7 +85,7 @@
       .tagline{text-align:right;max-width:48ch;font-size:clamp(16px,1.6vw,20px)}
     }
     @media (min-width:1600px){
-      .hero{min-height:82vh;border-radius:22px}
+      .hero{min-height:82vh}   /* no border radius here either */
       .ig{font-size:18px}
       .tagline{max-width:62ch;font-size:22px}
     }
@@ -99,7 +110,7 @@
       <div class="hero__overlay" aria-hidden="true"></div>
 
       <div class="hero__content">
-        <h1><a href="#home">PORTFOLIO</a></h1>
+        <h1>PORTFOLIO</h1>
 
         <div class="meta-row">
           <div class="roles">
@@ -107,7 +118,7 @@
             <div>Videographer</div>
           </div>
           <div class="divider" role="presentation"></div>
-          <div class="name"><a href="#about">ANNA URIK</a></div>
+          <div class="name"><a href="/about">ANNA URIK</a></div>
         </div>
 
         <div></div> <!-- flexible spacer -->
