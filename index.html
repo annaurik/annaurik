@@ -32,16 +32,20 @@
     @media (min-width:1600px){ .wrap{max-width:1720px;padding:32px} }           /* large desktop */
 
     /* --- HERO --- */
-    .hero{position:relative;border-radius:16px;overflow:hidden;min-height:68vh;display:grid}
+    .hero{position:relative;border-radius:16px;overflow:hidden;min-height:68vh;display:grid;container-type:inline-sizeposition:relative;border-radius:16px;overflow:hidden;min-height:68vh;display:grid}
     .hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.35) 100%)}
     .hero__content{position:relative;z-index:2;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;padding:clamp(16px,4vw,40px)}
 
     /* Big title */
-    .hero h1{margin:0;font-weight:900;letter-spacing:.01em;color:var(--accent);font-size:clamp(56px,16vw,160px);line-height:.9}
+    .hero h1{margin:0;font-weight:900;letter-spacing:.01em;color:var(--accent);line-height:.9;width:100%;
+      /* Fallback: viewport-based fluid type */
+      font-size:clamp(44px,12vw,220px);
+      text-wrap:balance;
+    }
     .hero h1 a{display:inline-block}
-    @media (min-width:768px){ .hero h1{font-size:clamp(96px,12vw,220px)} }      /* desktop scaling */
-    @media (min-width:1600px){ .hero h1{font-size:clamp(140px,10vw,300px)} }    /* large desktop */
+    @media (min-width:768px){ .hero h1{font-size:clamp(72px,10vw,260px)} }      /* desktop scaling */
+    @media (min-width:1600px){ .hero h1{font-size:clamp(120px,8vw,320px)} }    /* large desktop */
 
     /* Row with roles • divider • name */
     .meta-row{display:grid;grid-template-columns:1fr;align-items:center;gap:12px;margin-top:8px}
@@ -78,6 +82,12 @@
     /* Mobile-first tweak for very small screens */
     @media (max-width:480px){
       .hero{min-height:72vh}
+    }
+  
+    /* Container-query override for even better scaling relative to the card width */
+    @supports (font-size: clamp(1rem, 10cqw, 20rem)){
+      /* Roughly keeps a 9–10 character word inside the container */
+      .hero h1{font-size:clamp(36px,9cqw,300px)}
     }
   </style>
 </head>
