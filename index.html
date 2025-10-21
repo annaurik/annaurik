@@ -27,6 +27,24 @@
     a:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
 
     .wrap{max-width:none;margin:0;padding:0}
+/* Instagram icon + handle */
+.ig-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  color:inherit;
+  text-decoration:none;
+}
+.ig-link:hover{ text-decoration:underline; text-underline-offset:4px; }
+.ig-icon{
+  width:1.2em;   /* scales with the .ig text size */
+  height:1.2em;
+  object-fit:contain;
+  display:block;
+}
+/* If your icon is dark and you need it light on the dark bg, uncomment:
+.ig-icon{ filter: invert(1) brightness(1.1); }
+*/
 
     .hero{
       position:relative;
@@ -129,7 +147,13 @@
         <div></div> <!-- flexible spacer (row 3 = 1fr) pushes footer down -->
 
         <div class="foot">
-          <div class="ig">IG: <a href="https://www.instagram.com/anna.urik/?hl=en" aria-label="Instagram - anna.urik">anna.urik</a></div>
+         <div class="ig">
+  <a class="ig-link" href="https://www.instagram.com/anna.urik/?hl=en" aria-label="Instagram — anna.urik" target="_blank" rel="noopener">
+    <img class="ig-icon" src="instagram.png" alt="" aria-hidden="true">
+    <span class="ig-handle">anna.urik</span>
+  </a>
+</div>
+
           <p class="tagline">Cinematic photography &amp; film. <br> Creative direction across music, performance and brand.</p>
         </div>
       </div>
