@@ -34,7 +34,7 @@
       position:relative;
       border-radius:0;             /* no rounded frame */
       overflow:hidden;             /* contain overlay/image */
-      min-height:68vh;
+      min-height:100vh;            /* fill the viewport height */
       display:grid;
       container-type:inline-size;  /* enables cqw-based fluid title */
     }
@@ -85,20 +85,27 @@
       .tagline{text-align:right;max-width:48ch;font-size:clamp(16px,1.6vw,20px)}
     }
     @media (min-width:1600px){
-      .hero{min-height:82vh}   /* no border radius here either */
       .ig{font-size:18px}
+      .tagline{max-width:62ch;font-size:22px}
+    }
       .tagline{max-width:62ch;font-size:22px}
     }
 
     /* Mobile-first tweak for very small screens */
     @media (max-width:480px){
-      .hero{min-height:72vh}
+      /* Full-bleed hero remains 100vh/dvh on small screens */
+    }
     }
   
     /* Container-query override for even better scaling relative to the card width */
     @supports (font-size: clamp(1rem, 10cqw, 20rem)){
       /* Roughly keeps a 9–10 character word inside the container */
       .hero h1{font-size:clamp(36px,9cqw,300px)}
+    }
+  
+    /* Use dynamic viewport units where supported to avoid bottom gaps on mobile */
+    @supports (height: 100dvh) {
+      .hero{ min-height:100dvh; }
     }
   </style>
 </head>
@@ -110,7 +117,7 @@
       <div class="hero__overlay" aria-hidden="true"></div>
 
       <div class="hero__content">
-        <h1>PORTFOLIO</h1>
+        <h1><a href="#home">PORTFOLIO</a></h1>
 
         <div class="meta-row">
           <div class="roles">
@@ -118,7 +125,7 @@
             <div>Videographer</div>
           </div>
           <div class="divider" role="presentation"></div>
-          <div class="name"><a href="/about">ANNA URIK</a></div>
+          <div class="name"><a href="#about">ANNA URIK</a></div>
         </div>
 
         <div></div> <!-- flexible spacer -->
