@@ -11,11 +11,9 @@
       --ink:#171717;
       --muted:#2d2d2dcc;
       --accent:#D7302E;
-      --rule:#222;           /* darker hairline like reference */
+      --rule:#222;
       --maxw:1280px;
-
-      /* Shared size for number + title so they align perfectly */
-      --pair-size: clamp(2rem, 4.8vw, 3.4rem);
+      --pair-size: clamp(2rem, 4.8vw, 3.4rem); /* shared number/title size */
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -39,19 +37,16 @@
     .back-home:hover{background:#000000b0}
     @media (max-width:980px){.back-home{top:12px;left:12px;padding:.5rem .75rem}}
 
-    /* Layout */
+    /* Page grid: left (title+list), right (mosaic of 3 images) */
     .wrap{
       max-width:var(--maxw);
       margin:0 auto;
       padding:clamp(56px,6vw,80px) clamp(16px,4vw,32px);
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:clamp(20px,4vw,48px);
+      grid-template-columns: 0.9fr 1.1fr;        /* right a bit wider */
+      gap:clamp(24px,4vw,56px);
     }
-    @media (min-width:1020px){
-      .wrap{grid-template-columns:.86fr 1.14fr} /* make right column a bit wider */
-    }
-    @media (max-width:1020px){ .wrap{grid-template-columns:1fr} }
+    @media (max-width:1020px){ .wrap{ grid-template-columns:1fr } }
 
     /* Left column */
     .title{
@@ -60,93 +55,58 @@
       font-size:clamp(2.4rem,9vw,6rem);
       letter-spacing:.01em;line-height:.95;
     }
-
-    /* List styled like the reference image */
     .list{
-      margin:0 0 clamp(20px,4vw,40px);
-      padding:0;list-style:none;max-width:660px;
-      border-top:2px solid var(--rule); /* line above first item */
+      margin:0; padding:0; list-style:none; max-width:660px;
+      border-top:2px solid var(--rule);
     }
     .li{
-      padding:26px 0;                 /* generous vertical space */
-      border-top:2px solid var(--rule);/* line above each subsequent item */
-      display:grid;
-      grid-template-columns:auto 1fr;
-      gap:22px;
-      align-items:baseline;           /* baseline align number & H3 */
+      padding:26px 0;
+      border-top:2px solid var(--rule);
+      display:grid; grid-template-columns:auto 1fr; gap:22px; align-items:baseline;
     }
     .li:first-child{ border-top:none; } /* list provides first rule */
 
     .num{
       font-weight:900;
       font-size:var(--pair-size);
-      line-height:1;                  /* tight for true box height */
+      line-height:1;
       letter-spacing:.02em;
     }
-
     .block h3{
-      margin:0 0 .55rem;              /* space below title so underline doesn't clash */
-      font-weight:900;
-      text-transform:uppercase;
+      margin:0 0 .55rem;              /* space under title so underline never hits copy */
+      font-weight:900; text-transform:uppercase;
       letter-spacing:.06em;
-      font-size:var(--pair-size);     /* same height as .num */
-      line-height:1;
-      display:inline-block;           /* helps baseline alignment */
+      font-size:var(--pair-size); line-height:1;
+      position:relative; display:inline-block; overflow:hidden; /* clip underline */
     }
     .block h3 a{
-      color:var(--ink);
-      text-decoration:none;
-      position:relative;
-      outline-offset:3px;
+      color:var(--ink); text-decoration:none; position:relative; outline-offset:3px;
     }
     .block h3 a:hover,.block h3 a:focus-visible{ color:var(--accent); }
     .block h3 a::after{
-      content:"";position:absolute;left:0;bottom:-.18em;width:0;height:2px; /* keep underline close */
-      background:var(--accent);transition:width .22s ease;
+      content:""; position:absolute; left:0; bottom:0; width:0; height:2px; /* tight underline */
+      background:var(--accent); transition:width .22s ease;
     }
     .block h3 a:hover::after,.block h3 a:focus-visible::after{ width:100%; }
+    .block p{ margin:0; color:var(--muted); font-size:clamp(1.06rem,1.55vw,1.18rem); line-height:1.45; }
 
-    .block p{
-      margin:0;                        /* now controlled by h3 margin-bottom */
-      color:var(--muted);
-      font-size:clamp(1.06rem,1.55vw,1.18rem); /* slight bump */
-      line-height:1.45;
+    /* Right column: 2 talls on top, 1 wide spanning below */
+    .mosaic{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:clamp(12px,2.4vw,24px);
+      align-items:start;
     }
+    .cell{ position:relative; overflow:hidden; }
+    .cell img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .tall{ aspect-ratio: 2/3; }
+    .wide{ aspect-ratio: 16/10; grid-column: 1 / -1; } /* spans both columns */
 
-    /* Left column: single square image */
-    .thumb-row{
-      display:grid;grid-template-columns:1fr;
-      gap:clamp(12px,2.4vw,24px);margin-top:clamp(16px,3vw,24px);
-      max-width:480px;
+    /* Mobile: stack all three images */
+    @media (max-width:720px){
+      .mosaic{ grid-template-columns:1fr; }
+      .wide{ grid-column:auto; }
     }
-    .tile{position:relative;overflow:hidden;aspect-ratio:1/1}
-    .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-
-    /* Right column: two tall images + one list */
-    .right{display:grid;grid-template-rows:auto auto;gap:clamp(20px,3vw,32px)}
-    .right-grid{
-      display:grid;grid-template-columns:1fr 1fr;
-      gap:clamp(12px,2.4vw,24px);align-items:start;
-    }
-    .tall{position:relative;overflow:hidden;aspect-ratio:2/3}
-    .tall img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .right .list{margin-top:0}
-    /* Keep the underline tight to the title, but never overlap the copy */
-.block h3{
-  position: relative;
-  display: inline-block;    /* keeps the heading’s box tight to its text */
-  overflow: hidden;         /* clips the underline inside the H3 box */
-  margin: 0 0 .55rem;       /* space before the subtitle */
-  line-height: 1;
-}
-
-/* underline stays inside the H3 (no negative offset) */
-.block h3 a{ display: inline-block; }
-.block h3 a::after{
-  bottom: 0;                /* was negative; now sits on the H3’s bottom edge */
-  height: 2px;
-}
-
   </style>
 </head>
 <body>
@@ -154,7 +114,7 @@
 <a class="back-home" href="/" aria-label="Home">HOME</a>
 
 <main class="wrap">
-  <!-- LEFT COLUMN -->
+  <!-- LEFT: title + all three sections -->
   <section>
     <h1 class="title">CONTENT</h1>
 
@@ -173,27 +133,6 @@
           <p>UK brands &amp; designers</p>
         </div>
       </li>
-    </ol>
-
-    <div class="thumb-row">
-      <figure class="tile">
-        <img src="photos/two.jpg" alt="Work tile" loading="lazy" decoding="async">
-      </figure>
-    </div>
-  </section>
-
-  <!-- RIGHT COLUMN -->
-  <section class="right">
-    <div class="right-grid">
-      <figure class="tall">
-        <img src="photos/one.jpg" alt="Portrait bottle set" loading="lazy" decoding="async">
-      </figure>
-      <figure class="tall">
-        <img src="photos/three.jpg" alt="Model on chair" loading="lazy" decoding="async">
-      </figure>
-    </div>
-
-    <ol class="list">
       <li class="li">
         <div class="num">03</div>
         <div class="block">
@@ -202,6 +141,19 @@
         </div>
       </li>
     </ol>
+  </section>
+
+  <!-- RIGHT: mosaic of 3 images (2 tall + 1 wide) -->
+  <section class="mosaic" aria-label="Selected work images">
+    <figure class="cell tall">
+      <img src="photos/one.jpg" alt="Portrait bottle set" loading="lazy" decoding="async">
+    </figure>
+    <figure class="cell tall">
+      <img src="photos/three.jpg" alt="Model on chair" loading="lazy" decoding="async">
+    </figure>
+    <figure class="cell wide">
+      <img src="photos/two.jpg" alt="Wide scene" loading="lazy" decoding="async">
+    </figure>
   </section>
 </main>
 
