@@ -11,9 +11,11 @@
       --ink:#171717;
       --muted:#2d2d2dcc;
       --accent:#D7302E;
-      --hair:#00000020;
+      --rule:#222;           /* darker hairline like mock */
       --maxw:1280px;
-       --pair-size: clamp(1.8rem, 4.5vw, 3.2rem); /* shared size for number + title */
+
+      /* Shared size for number + title so they align perfectly */
+      --pair-size: clamp(2rem, 4.8vw, 3.4rem);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -49,9 +51,7 @@
     @media (min-width:1020px){
       .wrap{grid-template-columns:.86fr 1.14fr} /* make right column a bit wider */
     }
-    @media (max-width:1020px){
-      .wrap{grid-template-columns:1fr}
-    }
+    @media (max-width:1020px){ .wrap{grid-template-columns:1fr} }
 
     /* Left column */
     .title{
@@ -60,39 +60,57 @@
       font-size:clamp(2.4rem,9vw,6rem);
       letter-spacing:.01em;line-height:.95;
     }
+
+    /* List styled like the reference image */
     .list{
       margin:0 0 clamp(20px,4vw,40px);
       padding:0;list-style:none;max-width:660px;
+      border-top:2px solid var(--rule); /* line above first item */
     }
     .li{
-      padding:22px 0;border-top:2px solid var(--hair);
-      display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;
+      padding:26px 0;                 /* generous vertical space */
+      border-top:2px solid var(--rule);/* line above each subsequent item */
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:22px;
+      align-items:baseline;           /* baseline align number & H3 */
     }
-    .li:last-child{border-bottom:2px solid var(--hair)}
-.num{
-  font-weight: 900;
-  font-size: var(--pair-size);
-  line-height: 1;            /* tight so its box = its font size */
-  letter-spacing: .02em;
-}
-.block h3{
-  margin: 0 0 .15rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  font-size: var(--pair-size);  /* same height as the number */
-  line-height: 1;               /* match number box height */
-}
+    .li:first-child{ border-top:none; } /* because list already has a top rule */
+
+    .num{
+      font-weight:900;
+      font-size:var(--pair-size);
+      line-height:1;                  /* tight for true box height */
+      letter-spacing:.02em;
+    }
+
+    .block h3{
+      margin:0;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-size:var(--pair-size);     /* same height as .num */
+      line-height:1;
+      display:inline-block;           /* helps baseline alignment */
+    }
     .block h3 a{
-      color:var(--ink);text-decoration:none;display:inline-block;position:relative;outline-offset:3px;
+      color:var(--ink);
+      text-decoration:none;
+      position:relative;
+      outline-offset:3px;
     }
-    .block h3 a:hover,.block h3 a:focus-visible{color:var(--accent)}
+    .block h3 a:hover,.block h3 a:focus-visible{ color:var(--accent); }
     .block h3 a::after{
       content:"";position:absolute;left:0;bottom:-.18em;width:0;height:2px;
       background:var(--accent);transition:width .22s ease;
     }
-    .block h3 a:hover::after,.block h3 a:focus-visible::after{width:100%}
-    .block p{margin:.2rem 0 0;color:var(--muted);font-size:clamp(.95rem,1.3vw,1.05rem)}
+    .block h3 a:hover::after,.block h3 a:focus-visible::after{ width:100%; }
+
+    .block p{
+      margin:.35rem 0 0;
+      color:var(--muted);
+      font-size:clamp(1rem,1.4vw,1.05rem);
+    }
 
     /* Left column: single square image */
     .thumb-row{
@@ -142,7 +160,7 @@
 
     <div class="thumb-row">
       <figure class="tile">
-        <img src="photos/two.jpg" alt="" loading="lazy" decoding="async">
+        <img src="photos/two.jpg" alt="Work tile" loading="lazy" decoding="async">
       </figure>
     </div>
   </section>
@@ -151,10 +169,10 @@
   <section class="right">
     <div class="right-grid">
       <figure class="tall">
-        <img src="photos/one.jpg" alt="" loading="lazy" decoding="async">
+        <img src="photos/one.jpg" alt="Portrait bottle set" loading="lazy" decoding="async">
       </figure>
       <figure class="tall">
-        <img src="photos/three.jpg" alt="" loading="lazy" decoding="async">
+        <img src="photos/three.jpg" alt="Model on chair" loading="lazy" decoding="async">
       </figure>
     </div>
 
