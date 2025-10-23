@@ -13,6 +13,7 @@
       --accent:#D7302E;
       --hair:#00000020;
       --maxw:1280px;
+       --pair-size: clamp(1.8rem, 4.5vw, 3.2rem); /* shared size for number + title */
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -68,11 +69,20 @@
       display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;
     }
     .li:last-child{border-bottom:2px solid var(--hair)}
-    .num{font-weight:900;font-size:clamp(1.8rem,4.5vw,3.2rem);letter-spacing:.02em}
-    .block h3{
-      margin:0 0 .15rem;font-weight:900;text-transform:uppercase;
-      letter-spacing:.06em;font-size:clamp(1.2rem,2.2vw,1.6rem);line-height:1.1;
-    }
+.num{
+  font-weight: 900;
+  font-size: var(--pair-size);
+  line-height: 1;            /* tight so its box = its font size */
+  letter-spacing: .02em;
+}
+.block h3{
+  margin: 0 0 .15rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: var(--pair-size);  /* same height as the number */
+  line-height: 1;               /* match number box height */
+}
     .block h3 a{
       color:var(--ink);text-decoration:none;display:inline-block;position:relative;outline-offset:3px;
     }
