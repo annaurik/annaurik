@@ -13,7 +13,9 @@
       --accent:#D7302E;
       --rule:#222;
       --maxw:1280px;
-      --pair-size: clamp(2rem, 4.8vw, 3.4rem); /* shared number/title size */
+
+      /* Shared size for number + title so they align perfectly */
+      --pair-size: clamp(2rem, 4.8vw, 3.4rem);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -72,8 +74,10 @@
       line-height:1;
       letter-spacing:.02em;
     }
+
+    /* Title + red underline (kept inside the H3 so it never overlaps subtitle) */
     .block h3{
-      margin:0 0 .55rem;              /* space under title so underline never hits copy */
+      margin:0 0 .55rem;              /* space below title so underline never hits copy */
       font-weight:900; text-transform:uppercase;
       letter-spacing:.06em;
       font-size:var(--pair-size); line-height:1;
@@ -88,6 +92,7 @@
       background:var(--accent); transition:width .22s ease;
     }
     .block h3 a:hover::after,.block h3 a:focus-visible::after{ width:100%; }
+
     .block p{ margin:0; color:var(--muted); font-size:clamp(1.06rem,1.55vw,1.18rem); line-height:1.45; }
 
     /* Right column: 2 talls on top, 1 wide spanning below */
