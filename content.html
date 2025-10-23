@@ -11,7 +11,7 @@
       --ink:#171717;
       --muted:#2d2d2dcc;
       --accent:#D7302E;
-      --rule:#222;           /* darker hairline like mock */
+      --rule:#222;           /* darker hairline like reference */
       --maxw:1280px;
 
       /* Shared size for number + title so they align perfectly */
@@ -75,7 +75,7 @@
       gap:22px;
       align-items:baseline;           /* baseline align number & H3 */
     }
-    .li:first-child{ border-top:none; } /* because list already has a top rule */
+    .li:first-child{ border-top:none; } /* list provides first rule */
 
     .num{
       font-weight:900;
@@ -85,7 +85,7 @@
     }
 
     .block h3{
-      margin:0;
+      margin:0 0 .55rem;              /* space below title so underline doesn't clash */
       font-weight:900;
       text-transform:uppercase;
       letter-spacing:.06em;
@@ -101,15 +101,16 @@
     }
     .block h3 a:hover,.block h3 a:focus-visible{ color:var(--accent); }
     .block h3 a::after{
-      content:"";position:absolute;left:0;bottom:-.18em;width:0;height:2px;
+      content:"";position:absolute;left:0;bottom:-.18em;width:0;height:2px; /* keep underline close */
       background:var(--accent);transition:width .22s ease;
     }
     .block h3 a:hover::after,.block h3 a:focus-visible::after{ width:100%; }
 
     .block p{
-      margin:.35rem 0 0;
+      margin:0;                        /* now controlled by h3 margin-bottom */
       color:var(--muted);
-      font-size:clamp(1rem,1.4vw,1.05rem);
+      font-size:clamp(1.06rem,1.55vw,1.18rem); /* slight bump */
+      line-height:1.45;
     }
 
     /* Left column: single square image */
@@ -130,17 +131,6 @@
     .tall{position:relative;overflow:hidden;aspect-ratio:2/3}
     .tall img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .right .list{margin-top:0}
-    /* Avoid link underline overlapping the subtitle + make subtitle a tad larger */
-.block h3 a::after{
-  bottom: -.28em;          /* drop underline a bit lower */
-}
-
-.block p{
-  margin-top: .6rem;       /* more space under the title */
-  font-size: clamp(1.06rem, 1.55vw, 1.18rem);  /* tiny size bump */
-  line-height: 1.45;       /* smoother reading */
-}
-
   </style>
 </head>
 <body>
