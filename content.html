@@ -142,6 +142,19 @@
     @media (prefers-reduced-motion: reduce){
       .tile img, .tall img{ filter: blur(4px); transform: none; }
     }
+    /* --- Remove rounded corners + blur on all images --- */
+.tile,
+.tall{
+  border-radius: 0;        /* squares the frames */
+  background: transparent; /* optional: drop the grey bg */
+}
+
+.tile img,
+.tall img{
+  filter: none;            /* no blur */
+  transform: none;         /* no zoom-in */
+}
+
   </style>
 </head>
 <body>
