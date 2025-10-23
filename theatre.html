@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anna Urik | Theatre</title>
+  <meta name="description" content="Cirk La Putyka — visual stories where theatre meets motion." />
+  <style>
+    :root{
+      --bg:#2b2828;        /* dark canvas from the comp */
+      --fg:#f3f3f3;        /* main text */
+      --muted:#e8e8e8cc;  /* paragraph */
+      --accent:#E0332F;   /* red numbers/titles */
+      --maxw: 1320px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font: 400 16px/1.5 system-ui, -apple-system, "Segoe UI", Inter, Arial, sans-serif;
+    }
+
+    /* HOME pill (same pattern as other pages) */
+    .back-home{
+      position:fixed; top:16px; left:16px; z-index:10;
+      display:inline-flex; align-items:center;
+      padding:.55rem .9rem; border-radius:999px;
+      background:#00000080; color:#fff; text-decoration:none;
+      font-weight:700; text-transform:uppercase; letter-spacing:.02em;
+      border:1px solid #ffffff22; backdrop-filter: blur(6px);
+      box-shadow:0 1px 2px #00000066;
+    }
+    .back-home:hover{ background:#000000b0; }
+    @media (max-width:980px){ .back-home{ top:12px; left:12px; padding:.5rem .75rem; } }
+
+    /* ===== Layout ===== */
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 32px);
+      display:grid;
+      grid-template-columns: 1.08fr 0.92fr;  /* left a bit larger */
+      gap: clamp(24px, 5vw, 72px);
+      align-items:start;
+    }
+    @media (max-width: 1000px){
+      .wrap{ grid-template-columns: 1fr; }
+    }
+
+    /* Left big image */
+    .media-left{
+      position:relative;
+      aspect-ratio: 16/10; /* wide feel like the comp */
+      background:#222;
+      overflow:hidden;
+    }
+    .media-left img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+    }
+
+    /* Right column */
+    .right{
+      display:grid;
+      grid-template-rows: auto auto 1fr;
+      gap: clamp(14px, 2.2vw, 24px);
+    }
+
+    .case-num{
+      margin:0;
+      color:var(--accent);
+      font-weight:900;
+      font-size: clamp(3.2rem, 10vw, 8rem);
+      line-height: .9;
+      letter-spacing:.01em;
+    }
+    .case-title{
+      margin:0;
+      color:var(--accent);
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-size: clamp(2.2rem, 6.2vw, 4.2rem);
+      line-height: .95;
+    }
+
+    .lead{
+      margin: 0;
+      color: var(--muted);
+      max-width: 58ch;
+      font-size: clamp(1rem, 1.35vw, 1.15rem);
+      line-height: 1.6;
+    }
+
+    .media-right{
+      position:relative;
+      aspect-ratio: 16/9;            /* slightly wider than left */
+      background:#222;
+      overflow:hidden;
+      margin-top: clamp(12px, 2.4vw, 24px);
+    }
+    .media-right img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+    }
+
+    /* Mobile stacking tweaks */
+    @media (max-width: 700px){
+      .case-num{ font-size: clamp(2.6rem, 16vw, 5rem); }
+      .case-title{ font-size: clamp(1.8rem, 10vw, 3rem); }
+      .lead{ max-width: 100%; }
+      .media-left{ aspect-ratio: 16/11; }
+      .media-right{ aspect-ratio: 16/10; }
+    }
+  </style>
+</head>
+<body>
+
+<a class="back-home" href="/" aria-label="Home">HOME</a>
+
+<main class="wrap" aria-label="Theatre case">
+  <!-- Left: big image -->
+  <figure class="media-left">
+    <img src="photos/theatre-left.jpg" alt="Aerial performer with hoops — Cirk La Putyka" loading="lazy" decoding="async">
+  </figure>
+
+  <!-- Right: number/title, copy, and second image -->
+  <section class="right">
+    <h2 class="case-num">01</h2>
+    <h1 class="case-title">THEATRE</h1>
+
+    <p class="lead">
+      With Cirk La Putyka, I explored the space where theatre meets motion—translating live
+      energy into visual stories that feel intimate, visceral, and alive. My work defined
+      the company’s digital identity and visual archive.
+    </p>
+
+    <figure class="media-right">
+      <img src="photos/theatre-right.jpg" alt="Performers on stage — Cirk La Putyka" loading="lazy" decoding="async">
+    </figure>
+  </section>
+</main>
+
+</body>
+</html>
