@@ -130,6 +130,17 @@
     .tall{position:relative;overflow:hidden;aspect-ratio:2/3}
     .tall img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .right .list{margin-top:0}
+    /* Avoid link underline overlapping the subtitle + make subtitle a tad larger */
+.block h3 a::after{
+  bottom: -.28em;          /* drop underline a bit lower */
+}
+
+.block p{
+  margin-top: .6rem;       /* more space under the title */
+  font-size: clamp(1.06rem, 1.55vw, 1.18rem);  /* tiny size bump */
+  line-height: 1.45;       /* smoother reading */
+}
+
   </style>
 </head>
 <body>
