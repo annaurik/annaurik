@@ -5,178 +5,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Anna Urik | Content</title>
   <meta name="description" content="Work index — theatre, fashion, portraits." />
-  <!-- Preload tiny placeholders (only the three we use) -->
-  <link rel="preload" as="image" href="content_ph_1.webp">
-  <link rel="preload" as="image" href="content_ph_2.webp">
-  <link rel="preload" as="image" href="content_ph_3.webp">
   <style>
     :root{
-      --cream: #F6F2E2;
-      --ink: #171717;
-      --muted: #2d2d2dcc;
-      --accent: #D7302E;
-      --hair: #00000020;
-      --maxw: 1280px;
+      --cream:#F6F2E2;
+      --ink:#171717;
+      --muted:#2d2d2dcc;
+      --accent:#D7302E;
+      --hair:#00000020;
+      --maxw:1280px;
     }
-    *{ box-sizing: border-box; }
-    html, body{ height:100%; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      background: var(--cream);
-      color: var(--ink);
-      font: 400 16px/1.55 system-ui, -apple-system, "Segoe UI", Inter, Arial, sans-serif;
+      background:var(--cream);
+      color:var(--ink);
+      font:400 16px/1.55 system-ui,-apple-system,"Segoe UI",Inter,Arial,sans-serif;
     }
 
     /* HOME pill */
     .back-home{
-      position: fixed; top:16px; left:16px; z-index:9999;
-      display:inline-flex; align-items:center;
-      padding:.55rem .9rem; border-radius:999px;
-      background:#00000080; color:white; text-decoration:none;
-      font-weight:700; text-transform:uppercase; letter-spacing:.02em;
-      border:1px solid #ffffff22; backdrop-filter: blur(6px);
+      position:fixed;top:16px;left:16px;z-index:9999;
+      display:inline-flex;align-items:center;
+      padding:.55rem .9rem;border-radius:999px;
+      background:#00000080;color:#fff;text-decoration:none;
+      font-weight:700;text-transform:uppercase;letter-spacing:.02em;
+      border:1px solid #ffffff22;backdrop-filter:blur(6px);
       box-shadow:0 1px 2px #00000066;
     }
-    .back-home:hover{ background:#000000b0; }
-    @media (max-width: 980px){ .back-home{ top:12px; left:12px; padding:.5rem .75rem; } }
+    .back-home:hover{background:#000000b0}
+    @media (max-width:980px){.back-home{top:12px;left:12px;padding:.5rem .75rem}}
 
-    /* ===== Page layout ===== */
+    /* Layout */
     .wrap{
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: clamp(56px,6vw,80px) clamp(16px,4vw,32px);
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: clamp(20px, 4vw, 48px);
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:clamp(56px,6vw,80px) clamp(16px,4vw,32px);
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:clamp(20px,4vw,48px);
     }
-    @media (max-width: 1020px){
-      .wrap{ grid-template-columns: 1fr; }
+    @media (min-width:1020px){
+      .wrap{grid-template-columns:.86fr 1.14fr} /* make right column a bit wider */
+    }
+    @media (max-width:1020px){
+      .wrap{grid-template-columns:1fr}
     }
 
     /* Left column */
     .title{
-      font-weight: 900;
-      color: var(--accent);
-      font-size: clamp(2.4rem, 9vw, 6rem);
-      letter-spacing: .01em;
-      line-height: .95;
-      margin: 0 0 clamp(16px, 3vw, 24px);
+      margin:0 0 clamp(16px,3vw,24px);
+      font-weight:900;color:var(--accent);
+      font-size:clamp(2.4rem,9vw,6rem);
+      letter-spacing:.01em;line-height:.95;
     }
     .list{
-      margin: 0 0 clamp(20px, 4vw, 40px);
-      padding: 0;
-      list-style: none;
-      max-width: 660px;
+      margin:0 0 clamp(20px,4vw,40px);
+      padding:0;list-style:none;max-width:660px;
     }
     .li{
-      padding: 22px 0;
-      border-top: 2px solid var(--hair);
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 18px;
-      align-items: baseline;
+      padding:22px 0;border-top:2px solid var(--hair);
+      display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;
     }
-    .li:last-child{ border-bottom: 2px solid var(--hair); }
-    .num{
-      font-weight: 900;
-      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
-      letter-spacing: .02em;
-    }
+    .li:last-child{border-bottom:2px solid var(--hair)}
+    .num{font-weight:900;font-size:clamp(1.8rem,4.5vw,3.2rem);letter-spacing:.02em}
     .block h3{
-      margin: 0;
-      font-weight: 900;
-      letter-spacing: .02em;
-      text-transform: uppercase;
-      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      margin:0 0 .15rem;font-weight:900;text-transform:uppercase;
+      letter-spacing:.06em;font-size:clamp(1.2rem,2.2vw,1.6rem);line-height:1.1;
     }
-    .block p{
-      margin: .2rem 0 0;
-      color: var(--muted);
-      font-size: clamp(.95rem, 1.3vw, 1.05rem);
+    .block h3 a{
+      color:var(--ink);text-decoration:none;display:inline-block;position:relative;outline-offset:3px;
     }
+    .block h3 a:hover,.block h3 a:focus-visible{color:var(--accent)}
+    .block h3 a::after{
+      content:"";position:absolute;left:0;bottom:-.18em;width:0;height:2px;
+      background:var(--accent);transition:width .22s ease;
+    }
+    .block h3 a:hover::after,.block h3 a:focus-visible::after{width:100%}
+    .block p{margin:.2rem 0 0;color:var(--muted);font-size:clamp(.95rem,1.3vw,1.05rem)}
 
-    /* Left column: bottom thumb (single) */
+    /* Left column: single square image */
     .thumb-row{
-      display: grid;
-      grid-template-columns: 1fr;         /* single image now */
-      gap: clamp(12px, 2.4vw, 24px);
-      margin-top: clamp(16px, 3vw, 24px);
-      max-width: 480px;                   /* tighter since it's one tile */
+      display:grid;grid-template-columns:1fr;
+      gap:clamp(12px,2.4vw,24px);margin-top:clamp(16px,3vw,24px);
+      max-width:480px;
     }
-    .tile{
-      position: relative;
-      overflow: hidden;
-      border-radius: 10px;
-      background: #ddd;
-      aspect-ratio: 1/1;
-    }
-    .tile img{
-      position: absolute; inset:0;
-      width:100%; height:100%;
-      object-fit: cover; object-position: center;
-      filter: blur(6px);
-      transform: scale(1.05);
-    }
+    .tile{position:relative;overflow:hidden;aspect-ratio:1/1}
+    .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 
-    /* Right column: two tall images + single list */
-    .right{
-      display: grid;
-      grid-template-rows: auto auto;
-      gap: clamp(20px, 3vw, 32px);
-    }
+    /* Right column: two tall images + one list */
+    .right{display:grid;grid-template-rows:auto auto;gap:clamp(20px,3vw,32px)}
     .right-grid{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(12px, 2.4vw, 24px);
-      align-items: start;
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:clamp(12px,2.4vw,24px);align-items:start;
     }
-    .tall{
-      position: relative; overflow: hidden;
-      border-radius: 10px; aspect-ratio: 3/4;
-      background: #ddd;
-    }
-    .tall img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter: blur(6px); transform: scale(1.05); }
-
-    .right .list{ margin-top: 0; }
-
-    @media (prefers-reduced-motion: reduce){
-      .tile img, .tall img{ filter: blur(4px); transform: none; }
-    }
-    /* --- Remove rounded corners + blur on all images --- */
-.tile,
-.tall{
-  border-radius: 0;        /* squares the frames */
-  background: transparent; /* optional: drop the grey bg */
-}
-
-.tile img,
-.tall img{
-  filter: none;            /* no blur */
-  transform: none;         /* no zoom-in */
-}
-/* Make the RIGHT column wider than the left on desktop */
-@media (min-width: 1020px){
-  .wrap{
-    /* was: 1.05fr .95fr */
-    grid-template-columns: 0.86fr 1.14fr;
-  }
-}
-
-/* Make the two right images taller (bigger presence) on larger screens */
-@media (min-width: 900px){
-  .tall{
-    /* was: aspect-ratio: 3/4; */
-    aspect-ratio: 2/3; /* taller => larger */
-  }
-}
-
-/* Optional: reclaim a little more real estate by tightening the gap */
-@media (min-width: 1020px){
-  .right-grid{
-    gap: clamp(10px, 1.8vw, 18px); /* slightly smaller gap than before */
-  }
-}
-
+    .tall{position:relative;overflow:hidden;aspect-ratio:2/3}
+    .tall img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .right .list{margin-top:0}
   </style>
 </head>
 <body>
@@ -192,64 +117,5 @@
       <li class="li">
         <div class="num">01</div>
         <div class="block">
-          <h3>Theatre</h3>
+          <h3><a href="/theatre">Theatre</a></h3>
           <p>Cirk La Putyka &amp; Jatka78</p>
-        </div>
-      </li>
-      <li class="li">
-        <div class="num">02</div>
-        <div class="block">
-          <h3>Fashion</h3>
-          <p>UK brands &amp; designers</p>
-        </div>
-      </li>
-    </ol>
-
-    <div class="thumb-row">
-      <!-- Single bottom tile -->
-      <figure class="tile">
-        <img src="photos/two.jpg" alt="" loading="lazy" decoding="async" data-full="">
-      </figure>
-    </div>
-  </section>
-
-  <!-- RIGHT COLUMN -->
-  <section class="right">
-    <div class="right-grid">
-      <figure class="tall">
-        <img src="photos/one.jpg" alt="" loading="lazy" decoding="async" data-full="">
-      </figure>
-      <figure class="tall">
-        <img src="photos/three.jpg" alt="" loading="lazy" decoding="async" data-full="">
-      </figure>
-    </div>
-
-    <ol class="list">
-      <li class="li">
-        <div class="num">03</div>
-        <div class="block">
-          <h3>Portraits</h3>
-          <p>UK based musicians, actors</p>
-        </div>
-      </li>
-    </ol>
-  </section>
-</main>
-
-<!-- Optional: fill data-full with your hi-res URLs to swap them in once loaded -->
-<script>
-  document.querySelectorAll('img[data-full]').forEach(img => {
-    const full = img.getAttribute('data-full');
-    if (!full) return;
-    const hi = new Image();
-    hi.src = full;
-    hi.decoding = 'async';
-    hi.onload = () => {
-      img.style.filter = 'none';
-      img.style.transform = 'none';
-      img.src = full;
-    };
-  });
-</script>
-</body>
-</html>
