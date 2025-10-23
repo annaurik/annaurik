@@ -154,6 +154,28 @@
   filter: none;            /* no blur */
   transform: none;         /* no zoom-in */
 }
+/* Make the RIGHT column wider than the left on desktop */
+@media (min-width: 1020px){
+  .wrap{
+    /* was: 1.05fr .95fr */
+    grid-template-columns: 0.86fr 1.14fr;
+  }
+}
+
+/* Make the two right images taller (bigger presence) on larger screens */
+@media (min-width: 900px){
+  .tall{
+    /* was: aspect-ratio: 3/4; */
+    aspect-ratio: 2/3; /* taller => larger */
+  }
+}
+
+/* Optional: reclaim a little more real estate by tightening the gap */
+@media (min-width: 1020px){
+  .right-grid{
+    gap: clamp(10px, 1.8vw, 18px); /* slightly smaller gap than before */
+  }
+}
 
   </style>
 </head>
