@@ -20,14 +20,23 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
 .back-home{
   position:fixed;top:16px;left:16px;z-index:10;
   display:inline-flex;align-items:center;
-  padding:.55rem .9rem;border-radius:999px;
-  background:#00000080;color:#fff;text-decoration:none;
-  font-weight:700;text-transform:uppercase;letter-spacing:.02em;
-  border:1px solid #ffffff22;backdrop-filter:blur(6px);
-  box-shadow:0 1px 2px #00000066;
+  color:#f4f1ea;text-decoration:none;
+  font-weight:700;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;
 }
-.back-home:hover{background:#000000b0}
-@media (max-width:980px){.back-home{top:12px;left:12px;padding:.5rem .75rem}}
+.back-home::before{content:'/';color:#e0332f;margin-right:5px}
+.back-home:hover{opacity:.7}
+.back-home{padding:12px 4px}
+@media (max-width:980px){.back-home{
+  position:fixed;top:16px;left:16px;z-index:10;
+  display:inline-flex;align-items:center;
+  color:#f4f1ea;text-decoration:none;
+  font-weight:700;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.back-home::before{content:'/';color:#e0332f;margin-right:5px}
+.back-home:hover{opacity:.7}
+.back-home{padding:12px 4px}}
 
 /* ── Hero section ── */
 .hero{
@@ -192,46 +201,4 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
     </figure>
 
     <!-- Pair wider left -->
-    <div class="row r-7-5">
-      <figure class="fig"><img src="photos/gg/gg_30.webp" alt="" loading="lazy" decoding="async"></figure>
-      <figure class="fig"><img src="photos/gg/gg_44.webp" alt="" loading="lazy" decoding="async"></figure>
-    </div>
-
-    <!-- Extra images -->
-    <div class="row r-6-6">
-      <figure class="fig"><img src="photos/gg/gg_13.webp" alt="" loading="lazy" decoding="async"></figure>
-      <figure class="fig"><img src="photos/gg/gg_22.webp" alt="" loading="lazy" decoding="async"></figure>
-    </div>
-
-    <figure class="fig center-lg">
-      <img src="photos/gg/gg_16.webp" alt="" loading="lazy" decoding="async">
-    </figure>
-
-    <div class="row r-5-7">
-      <figure class="fig"><img src="photos/gg/gg_26.webp" alt="" loading="lazy" decoding="async"></figure>
-      <figure class="fig"><img src="photos/gg/gg_41.webp" alt="" loading="lazy" decoding="async"></figure>
-    </div>
-
-    <!-- Close with single centred -->
-    <figure class="fig center">
-      <img src="photos/gg/gg_45.webp" alt="" loading="lazy" decoding="async">
-    </figure>
-
-  </div>
-
-</main>
-<a class="btt" href="#top" aria-label="Back to top" id="btt">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="18 15 12 9 6 15"/>
-  </svg>
-</a>
-<script>
-(function(){
-  var btn = document.getElementById('btt');
-  window.addEventListener('scroll', function(){
-    btn.classList.toggle('visible', window.scrollY > 400);
-  }, {passive:true});
-})();
-</script>
-</body>
-</html>
+    <div class="row
