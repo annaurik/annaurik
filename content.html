@@ -11,17 +11,15 @@
   --ink:#171717;
   --muted:#2d2d2dcc;
   --accent:#D7302E;
-  --rule:#222;
+  --rule:#c8c2b6;
   --maxw:1280px;
-  --pair-size:clamp(2rem,4.8vw,3.4rem);
 }
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body{margin:0;min-height:100%}
 body{
-  margin:0;
   background:var(--cream);
   color:var(--ink);
-  font:400 16px/1.55 system-ui,-apple-system,"Segoe UI",Inter,Arial,sans-serif;
+  font:400 16px/1.5 system-ui,-apple-system,"Segoe UI",Inter,Arial,sans-serif;
 }
 
 .back-home{
@@ -34,105 +32,128 @@ body{
   box-shadow:0 1px 2px #00000066;
 }
 .back-home:hover{background:#000000b0}
-@media (max-width:980px){.back-home{top:12px;left:12px;padding:.5rem .75rem}}
 
 .wrap{
   max-width:var(--maxw);
   margin:0 auto;
-  padding:clamp(56px,6vw,80px) clamp(16px,4vw,32px);
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:clamp(24px,4vw,64px);
-  align-items:start;
+  padding:clamp(72px,8vw,120px) clamp(24px,5vw,64px) clamp(64px,8vw,100px);
 }
-@media (max-width:1020px){.wrap{grid-template-columns:1fr}}
 
-.title{
-  margin:0 0 clamp(16px,3vw,24px);
-  font-weight:900;color:var(--accent);
+.page-title{
+  margin:0 0 clamp(48px,7vw,96px);
+  font-weight:900;
+  color:var(--accent);
   font-size:clamp(2.4rem,9vw,6rem);
-  letter-spacing:.01em;line-height:.95;
+  letter-spacing:.01em;
+  line-height:.95;
 }
 
-.list{margin:0;padding:0;list-style:none;max-width:660px;border-top:2px solid var(--rule)}
-
-.li{
-  padding:26px 0;
-  border-top:2px solid var(--rule);
-  display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:baseline;
+.projects{
+  list-style:none;
+  margin:0;padding:0;
 }
-.li:first-child{border-top:none}
 
-.num{font-weight:900;font-size:var(--pair-size);line-height:1;letter-spacing:.02em}
+.project{
+  border-top:1px solid var(--rule);
+  padding:clamp(28px,4vw,56px) 0;
+}
+.project:last-child{border-bottom:1px solid var(--rule)}
 
-.block h3{
-  margin:0 0 .55rem;
-  font-weight:900;text-transform:uppercase;
-  letter-spacing:.06em;
-  font-size:var(--pair-size);
-  line-height:1;
-  position:relative;display:inline-block;overflow:hidden;
-  padding-bottom:.18em;
+.project a{
+  display:block;
+  text-decoration:none;
+  color:var(--ink);
+  max-width:58%;
 }
-.block h3 a{
-  color:var(--ink);text-decoration:none;
-  position:relative;outline-offset:3px;
+.project a:hover .project-name{color:var(--accent)}
+.project a:hover .project-name::after{transform:scaleX(1)}
+
+/* left / right alternation */
+.project--left  a{margin-right:auto}
+.project--right a{margin-left:auto;text-align:right}
+
+.project-num{
+  display:block;
+  font-size:clamp(.75rem,1.2vw,.9rem);
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:.6rem;
 }
-.block h3 a::after{
-  content:"";position:absolute;left:0;bottom:0;
-  height:2px;width:100%;background:var(--accent);
+
+.project-name{
+  display:block;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  font-size:clamp(1.8rem,5.5vw,4.2rem);
+  line-height:.95;
+  margin-bottom:.6rem;
+  position:relative;
+  transition:color .2s ease;
+}
+.project-name::after{
+  content:"";
+  position:absolute;left:0;bottom:-.1em;
+  height:2px;width:100%;
+  background:var(--accent);
   transform:scaleX(0);transform-origin:left;
-  transition:transform .22s ease;
+  transition:transform .25s ease;
 }
-.block h3 a:hover::after,
-.block h3 a:focus-visible::after{transform:scaleX(1)}
-.block p{margin:0;color:var(--muted);font-size:clamp(1.06rem,1.55vw,1.18rem);line-height:1.45}
+.project--right .project-name::after{
+  transform-origin:right;
+}
 
-/* Right image */
-.hero-img{margin:0}
-.hero-img img{width:100%;height:auto;display:block}
+.project-sub{
+  display:block;
+  font-size:clamp(.85rem,1.3vw,1rem);
+  color:var(--muted);
+  letter-spacing:.04em;
+}
+
+@media(max-width:700px){
+  .project a{max-width:80%}
+}
+@media(max-width:480px){
+  .project a{max-width:100%}
+  .project--right a{text-align:left;margin-left:0}
+}
 </style>
 </head>
 <body>
 <a class="back-home" href="/" aria-label="Home">HOME</a>
 
 <main class="wrap">
-  <!-- LEFT: title + project list -->
-  <section>
-    <h1 class="title">WORK</h1>
-    <ol class="list">
+  <h1 class="page-title">WORK</h1>
 
-      <li class="li">
-        <div class="num">01</div>
-        <div class="block">
-          <h3><a href="/gentle-gesture">Gentle Gesture</a></h3>
-          <p>Fashion &amp; editorial</p>
-        </div>
-      </li>
+  <ol class="projects">
 
-      <li class="li">
-        <div class="num">02</div>
-        <div class="block">
-          <h3><a href="/home-of-the-good-chair">Home of the Good Chair</a></h3>
-          <p>Interior &amp; still life</p>
-        </div>
-      </li>
+    <li class="project project--left">
+      <a href="/gentle-gesture">
+        <span class="project-num">01</span>
+        <span class="project-name">Gentle Gesture</span>
+        <span class="project-sub">Fashion &amp; editorial</span>
+      </a>
+    </li>
 
-      <li class="li">
-        <div class="num">03</div>
-        <div class="block">
-          <h3><a href="/salina">Salina</a></h3>
-          <p>Portrait &amp; fashion</p>
-        </div>
-      </li>
+    <li class="project project--right">
+      <a href="/home-of-the-good-chair">
+        <span class="project-num">02</span>
+        <span class="project-name">Home of the Good Chair</span>
+        <span class="project-sub">Interior &amp; still life</span>
+      </a>
+    </li>
 
-    </ol>
-  </section>
+    <li class="project project--left">
+      <a href="/salina">
+        <span class="project-num">03</span>
+        <span class="project-name">Salina</span>
+        <span class="project-sub">Portrait &amp; fashion</span>
+      </a>
+    </li>
 
-  <!-- RIGHT: single strong image -->
-  <figure class="hero-img" aria-label="Selected work">
-    <img src="photos/chair/chair_07.webp" alt="Home of the Good Chair" loading="lazy" decoding="async">
-  </figure>
+  </ol>
 </main>
 </body>
 </html>
