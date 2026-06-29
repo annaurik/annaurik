@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Anna Urik | Calling</title>
 <meta name="description" content="Calling — film and moving image work by Anna Urik." />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <style>
 :root{
   --bg:#0e0e0e;
@@ -27,7 +28,7 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
   box-shadow:0 1px 2px #00000066;
 }
 .back-home:hover{background:#000000b0}
-@media (max-width:980px){.back-home{top:12px;left:12px;padding:.5rem .75rem}}
+@media(max-width:980px){.back-home{top:12px;left:12px;padding:.5rem .75rem}}
 
 .wrap{
   max-width:var(--maxw);
@@ -49,20 +50,33 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
   font-size:clamp(1rem,1.35vw,1.15rem);
   line-height:1.6;
   max-width:68ch;
-  margin:0 0 clamp(32px,5vw,56px);
+  margin:0 0 clamp(40px,6vw,72px);
 }
 
-.video-feature{
-  position:relative;
-  background:#111;
-  overflow:hidden;
-  border-radius:2px;
+/* ── Video grid ── */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(10px,1.8vw,20px);
+  align-items:start;
 }
-.video-feature video{
-  width:100%;
-  display:block;
-  aspect-ratio:16/9;
-  object-fit:cover;
+
+/* Portrait video takes one column and is taller */
+.v-portrait{grid-row:span 2}
+.v-portrait video{aspect-ratio:9/16;width:100%;display:block;background:#111}
+
+/* Landscape videos */
+.v-land video{aspect-ratio:16/9;width:100%;display:block;background:#111}
+
+/* One video featured full-width at the bottom */
+.v-full{grid-column:1/-1}
+.v-full video{aspect-ratio:16/9;width:100%;display:block;background:#111}
+
+@media(max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .v-portrait{grid-row:auto}
+  .v-portrait video{aspect-ratio:4/5}
+  .v-full{grid-column:auto}
 }
 
 /* Back to top */
@@ -80,14 +94,13 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
 .btt:hover{background:#000000b0;transform:translateY(-2px)}
 .btt svg{width:16px;height:16px;display:block}
 </style>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body id="top">
 <a class="back-home" href="/content" aria-label="Back to Work">WORK</a>
 
 <main class="wrap">
   <div class="page-header">
-    <h2 class="case-num">03</h2>
+    <h2 class="case-num">05</h2>
     <h1 class="case-title">CALLING</h1>
   </div>
 
@@ -96,36 +109,44 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
     Each film is a collaboration — with a subject, a mood, and a moment that can't be staged.
   </p>
 
-  <div class="video-feature">
-    <video controls preload="metadata">
-      <source src="videos/calling/callinginsta.mp4" type="video/mp4">
-    </video>
-  </div>
+  <div class="grid">
 
-  <div class="video-feature">
-    <video controls preload="none">
-      <source src="videos/calling/redlip_32.mp4" type="video/mp4">
-    </video>
-  </div>
+    <!-- Portrait — spans 2 rows -->
+    <div class="v-portrait">
+      <video controls preload="metadata">
+        <source src="videos/calling/callinginsta.mp4" type="video/mp4">
+      </video>
+    </div>
 
-  <div class="video-feature">
-    <video controls preload="none">
-      <source src="videos/calling/suit_3.mp4" type="video/mp4">
-    </video>
-  </div>
+    <!-- Two landscape videos stacked in second column -->
+    <div class="v-land">
+      <video controls preload="none">
+        <source src="videos/calling/redlip_32.mp4" type="video/mp4">
+      </video>
+    </div>
 
-  <div class="video-feature">
-    <video controls preload="none">
-      <source src="videos/calling/cleanbeauty_3.mp4" type="video/mp4">
-    </video>
-  </div>
+    <div class="v-land">
+      <video controls preload="none">
+        <source src="videos/calling/suit_3.mp4" type="video/mp4">
+      </video>
+    </div>
 
-  <div class="video-feature">
-    <video controls preload="none">
-      <source src="videos/calling/suit_32.mp4" type="video/mp4">
-    </video>
+    <!-- Two more landscape side by side -->
+    <div class="v-land">
+      <video controls preload="none">
+        <source src="videos/calling/cleanbeauty_3.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="v-land">
+      <video controls preload="none">
+        <source src="videos/calling/suit_32.mp4" type="video/mp4">
+      </video>
+    </div>
+
   </div>
 </main>
+
 <a class="btt" href="#top" aria-label="Back to top" id="btt">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="18 15 12 9 6 15"/>
@@ -133,10 +154,8 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
 </a>
 <script>
 (function(){
-  var btn = document.getElementById('btt');
-  window.addEventListener('scroll', function(){
-    btn.classList.toggle('visible', window.scrollY > 400);
-  }, {passive:true});
+  var btn=document.getElementById('btt');
+  window.addEventListener('scroll',function(){btn.classList.toggle('visible',window.scrollY>400)},{passive:true});
 })();
 </script>
 </body>
