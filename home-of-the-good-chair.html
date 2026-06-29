@@ -53,26 +53,39 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
   .case-title{font-size:clamp(1.8rem,8vw,2.8rem)}
 }
 
-/* ── Photo grid ── */
-.grid-section{
-  max-width:var(--maxw);margin:0 auto;
-  padding:0 clamp(16px,4vw,32px) clamp(48px,6vw,80px);
-}
-.grid{
-  columns:3;
-  column-gap:clamp(8px,1.6vw,16px);
-}
-@media (max-width:900px){.grid{columns:2}}
-@media (max-width:500px){.grid{columns:1}}
 
-.grid-cell{
-  break-inside:avoid;
-  margin-bottom:clamp(8px,1.6vw,16px);
-  background:#222;
-  overflow:hidden;
+/* ── Editorial gallery ── */
+.gallery{
+  max-width:1440px;
+  margin:0 auto;
+  padding:clamp(24px,5vw,80px) clamp(24px,5vw,80px) clamp(64px,10vw,140px);
+  display:flex;
+  flex-direction:column;
+  gap:clamp(32px,5vw,80px);
 }
-.grid-cell img{width:100%;height:auto;display:block;transition:transform .4s ease}
-.grid-cell:hover img{transform:scale(1.02)}
+.row{
+  display:grid;
+  gap:clamp(14px,2.5vw,40px);
+  align-items:start;
+}
+.r-7-5{grid-template-columns:7fr 5fr}
+.r-5-7{grid-template-columns:5fr 7fr}
+.r-6-6{grid-template-columns:1fr 1fr}
+.r-4-8{grid-template-columns:4fr 8fr}
+.r-8-4{grid-template-columns:8fr 4fr}
+.r-3  {grid-template-columns:1fr 1fr 1fr}
+.fig{margin:0}
+.fig img{width:100%;height:auto;display:block}
+.center   {max-width:62%;margin:0 auto}
+.center-lg{max-width:78%;margin:0 auto}
+.push-r   {max-width:62%;margin-left:auto}
+.push-l   {max-width:62%;margin-right:auto}
+@media(max-width:700px){
+  .r-7-5,.r-5-7,.r-6-6,.r-4-8,.r-8-4{grid-template-columns:1fr}
+  .r-3{grid-template-columns:1fr 1fr}
+  .center,.center-lg,.push-r,.push-l{max-width:100%;margin:0}
+}
+@media(max-width:480px){.r-3{grid-template-columns:1fr}}
 
 </style>
 </head>
