@@ -116,14 +116,12 @@
     }
 
     /* ── Right column ── */
-    .images{position:relative;overflow:hidden;min-height:50vh}
-    .images img{
-      position:absolute;inset:0;
-      width:100%;height:100%;
-      object-fit:cover;
-      object-position:78% center;
+    .images{
+      background-image:url('photos/profile.jpg');
+      background-size:cover;
+      background-position:78% center;
       filter:grayscale(1) contrast(1.05);
-      display:block;
+      min-height:50vh;
     }
     @media(max-width:900px){.images{min-height:60vw}}
   </style>
@@ -171,9 +169,7 @@
   </div>
 
   <!-- RIGHT -->
-  <div class="images">
-    <img src="photos/profile.jpg" alt="Anna Urik" loading="eager" decoding="async">
-  </div>
+  <div class="images" role="img" aria-label="Anna Urik"></div>
 
 </main>
 </body>
