@@ -55,6 +55,7 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
 
 
 
+
 /* ── Editorial gallery ── */
 .gallery{
   max-width:960px;
@@ -72,17 +73,17 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
 .r-7-5{grid-template-columns:7fr 5fr}
 .r-5-7{grid-template-columns:5fr 7fr}
 .r-6-6{grid-template-columns:1fr 1fr}
-.r-4-8{grid-template-columns:4fr 8fr}
-.r-8-4{grid-template-columns:8fr 4fr}
+.r-6-4{grid-template-columns:6fr 4fr}
+.r-4-6{grid-template-columns:4fr 6fr}
 .r-3  {grid-template-columns:1fr 1fr 1fr}
 .fig{margin:0}
 .fig img{width:100%;height:auto;display:block}
-.center   {max-width:55%;margin:0 auto}
-.center-lg{max-width:75%;margin:0 auto}
-.push-r   {max-width:55%;margin-left:auto}
-.push-l   {max-width:55%;margin-right:auto}
+.center   {max-width:72%;margin:0 auto}
+.center-lg{max-width:88%;margin:0 auto}
+.push-r   {max-width:72%;margin-left:auto}
+.push-l   {max-width:72%;margin-right:auto}
 @media(max-width:700px){
-  .r-7-5,.r-5-7,.r-6-6,.r-4-8,.r-8-4{grid-template-columns:1fr}
+  .r-7-5,.r-5-7,.r-6-6,.r-6-4,.r-4-6{grid-template-columns:1fr}
   .r-3{grid-template-columns:1fr 1fr}
   .center,.center-lg,.push-r,.push-l{max-width:100%;margin:0}
 }
@@ -128,7 +129,7 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
       <img src="photos/chair/chair_01.webp" alt="" loading="lazy" decoding="async">
     </figure>
 
-    <div class="row r-4-8">
+    <div class="row r-4-6">
       <figure class="fig"><img src="photos/chair/chair_02.webp" alt="" loading="lazy" decoding="async"></figure>
       <figure class="fig"><img src="photos/chair/chair_10.webp" alt="" loading="lazy" decoding="async"></figure>
     </div>
@@ -143,7 +144,7 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
       <img src="photos/chair/chair_15.webp" alt="" loading="lazy" decoding="async">
     </figure>
 
-    <div class="row r-8-4">
+    <div class="row r-6-4">
       <figure class="fig"><img src="photos/chair/chair_03.webp" alt="" loading="lazy" decoding="async"></figure>
       <figure class="fig"><img src="photos/chair/chair_14.webp" alt="" loading="lazy" decoding="async"></figure>
     </div>
