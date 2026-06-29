@@ -40,21 +40,21 @@
 
     /* ── Layout ── */
     .wrap{
-      max-width:var(--maxw);
-      margin:0 auto;
-      padding:clamp(80px,8vw,120px) clamp(24px,5vw,64px) clamp(48px,6vw,80px);
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:clamp(32px,5vw,80px);
-      align-items:start;
       min-height:100vh;
+      align-items:stretch;
     }
     @media(max-width:900px){
-      .wrap{grid-template-columns:1fr;min-height:auto}
+      .wrap{grid-template-columns:1fr}
     }
 
     /* ── Left column ── */
-    .left{display:flex;flex-direction:column;gap:clamp(20px,3vw,36px)}
+    .left{
+      display:flex;flex-direction:column;gap:clamp(20px,3vw,36px);
+      padding:clamp(80px,8vw,120px) clamp(24px,5vw,64px) clamp(48px,6vw,80px);
+      justify-content:center;
+    }
 
     .headline{
       margin:0;
@@ -99,18 +99,24 @@
       color:var(--muted);font-weight:600;margin-bottom:.15rem;
     }
 
-    /* ── Right column — image collage ── */
-    .images{display:flex;flex-direction:column;gap:clamp(10px,1.8vw,20px)}
-    .img-top{width:100%;overflow:hidden}
-    .img-top img{width:100%;height:auto;display:block}
-    .img-bottom{width:72%;overflow:hidden}
-    .img-bottom img{width:100%;height:auto;display:block}
-
-    @media(max-width:900px){
-      .img-bottom{width:60%}
+    /* ── Right column — full-height portrait ── */
+    .images{
+      position:relative;
+      overflow:hidden;
+      min-height:50vh;
     }
-    @media(max-width:600px){
-      .img-bottom{width:80%}
+    .images img{
+      position:absolute;
+      inset:0;
+      width:143%; /* wider than container to allow right crop */
+      height:100%;
+      object-fit:cover;
+      object-position:left center;
+      filter:grayscale(1) contrast(1.05);
+      display:block;
+    }
+    @media(max-width:900px){
+      .images{min-height:60vw}
     }
   </style>
 </head>
@@ -130,17 +136,6 @@
     <p class="descriptor">Telling stories that connect emotion, identity and style.</p>
 
     <div class="contacts">
-      <a class="contact" href="https://www.annaurik.com" aria-label="Website">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-        </svg>
-        <span>
-          <span class="contact-label">Website</span>
-          www.annaurik.com
-        </span>
-      </a>
-
       <a class="contact" href="mailto:anna@annaurik.com" aria-label="Email anna@annaurik.com">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/>
@@ -165,12 +160,7 @@
 
   <!-- RIGHT -->
   <div class="images">
-    <div class="img-top">
-      <img src="photos/about.jpg" alt="Anna Urik — on set" loading="eager" decoding="async">
-    </div>
-    <div class="img-bottom">
-      <img src="photos/profile.jpg" alt="Anna Urik — portrait" loading="lazy" decoding="async">
-    </div>
+    <img src="photos/profile.jpg" alt="Anna Urik" loading="eager" decoding="async">
   </div>
 
 </main>
