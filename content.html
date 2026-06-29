@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Anna Urik | Work</title>
-<meta name="description" content="Work — Theatre, Gentle Gesture, Calling, Home of the Good Chair, Salina." />
+<meta name="description" content="Work — Gentle Gesture, Home of the Good Chair, Salina." />
 <style>
 :root{
   --cream:#F6F2E2;
@@ -88,15 +88,10 @@ body{
 .block p{margin:0;color:var(--muted);font-size:clamp(1.06rem,1.55vw,1.18rem);line-height:1.45}
 
 /* Right mosaic */
-.mosaic{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2.4vw,24px);align-items:start}
-.cell{position:relative;overflow:hidden}
-.cell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.tall{aspect-ratio:2/3}
-.wide{aspect-ratio:16/10;grid-column:1/-1}
-@media (max-width:720px){
-  .mosaic{grid-template-columns:1fr}
-  .wide{grid-column:auto}
-}
+.mosaic{columns:2;column-gap:clamp(12px,2.4vw,24px)}
+.cell{break-inside:avoid;margin-bottom:clamp(12px,2.4vw,24px);overflow:hidden}
+.cell img{width:100%;height:auto;display:block}
+@media (max-width:720px){.mosaic{columns:1}}
 </style>
 </head>
 <body>
@@ -111,29 +106,13 @@ body{
       <li class="li">
         <div class="num">01</div>
         <div class="block">
-          <h3><a href="/theatre">Theatre</a></h3>
-          <p>Cirk La Putyka &amp; Jatka78</p>
-        </div>
-      </li>
-
-      <li class="li">
-        <div class="num">02</div>
-        <div class="block">
           <h3><a href="/gentle-gesture">Gentle Gesture</a></h3>
           <p>Fashion &amp; editorial</p>
         </div>
       </li>
 
       <li class="li">
-        <div class="num">03</div>
-        <div class="block">
-          <h3><a href="/calling">Calling</a></h3>
-          <p>Film &amp; moving image</p>
-        </div>
-      </li>
-
-      <li class="li">
-        <div class="num">04</div>
+        <div class="num">02</div>
         <div class="block">
           <h3><a href="/home-of-the-good-chair">Home of the Good Chair</a></h3>
           <p>Interior &amp; still life</p>
@@ -141,7 +120,7 @@ body{
       </li>
 
       <li class="li">
-        <div class="num">05</div>
+        <div class="num">03</div>
         <div class="block">
           <h3><a href="/salina">Salina</a></h3>
           <p>Portrait &amp; fashion</p>
@@ -153,14 +132,17 @@ body{
 
   <!-- RIGHT: image mosaic -->
   <section class="mosaic" aria-label="Selected work">
-    <figure class="cell tall">
-      <img src="photos/theatre/theatre_31.webp" alt="Theatre — Cirk La Putyka" loading="lazy" decoding="async">
-    </figure>
-    <figure class="cell tall">
+    <figure class="cell">
       <img src="photos/gg/gg_28.webp" alt="Gentle Gesture" loading="lazy" decoding="async">
     </figure>
-    <figure class="cell wide">
+    <figure class="cell">
+      <img src="photos/salina/salina_01.webp" alt="Salina" loading="lazy" decoding="async">
+    </figure>
+    <figure class="cell">
       <img src="photos/chair/chair_04.webp" alt="Home of the Good Chair" loading="lazy" decoding="async">
+    </figure>
+    <figure class="cell">
+      <img src="photos/gg/gg_12.webp" alt="Gentle Gesture" loading="lazy" decoding="async">
     </figure>
   </section>
 </main>
