@@ -4,7 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Anna Urik | Work</title>
-<meta name="description" content="Work — Gentle Gesture, Home of the Good Chair, Salina." />
+<meta name="description" content="Work — Gentle Gesture, Home of the Good Chair, Salina, Theatre." />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <style>
 :root{
   --cream:#F6F2E2;
@@ -48,10 +49,7 @@ body{
   line-height:.95;
 }
 
-.projects{
-  list-style:none;
-  margin:0;padding:0;
-}
+.projects{list-style:none;margin:0;padding:0;}
 
 .project{
   border-top:1px solid var(--rule);
@@ -63,7 +61,6 @@ body{
 }
 .project:last-child{border-bottom:1px solid var(--rule)}
 
-/* cream fade over background image */
 .project::before{
   content:'';
   position:absolute;inset:0;
@@ -71,9 +68,9 @@ body{
   transition:background .4s ease;
 }
 .project:hover::before{background:rgba(246,242,226,0.78)}
-.project a{position:relative;z-index:1}
 
 .project a{
+  position:relative;z-index:1;
   display:block;
   text-decoration:none;
   color:var(--ink);
@@ -82,7 +79,6 @@ body{
 .project a:hover .project-name{color:var(--accent)}
 .project a:hover .project-name::after{transform:scaleX(1)}
 
-/* left / right alternation */
 .project--left  a{margin-right:auto}
 .project--right a{margin-left:auto;text-align:right}
 
@@ -115,9 +111,7 @@ body{
   transform:scaleX(0);transform-origin:left;
   transition:transform .25s ease;
 }
-.project--right .project-name::after{
-  transform-origin:right;
-}
+.project--right .project-name::after{transform-origin:right}
 
 .project-sub{
   display:block;
@@ -126,9 +120,7 @@ body{
   letter-spacing:.04em;
 }
 
-@media(max-width:700px){
-  .project a{max-width:80%}
-}
+@media(max-width:700px){.project a{max-width:80%}}
 @media(max-width:480px){
   .project a{max-width:100%}
   .project--right a{text-align:left;margin-left:0}
@@ -167,7 +159,7 @@ body{
       </a>
     </li>
 
-    <li class="project project--right" style="background-image:url('photos/theatre/theatre_22.webp')">
+    <li class="project project--right" style="background-image:url('photos/theatre/theatre_31.webp')">
       <a href="/theatre">
         <span class="project-num">04</span>
         <span class="project-name">Theatre</span>

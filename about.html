@@ -5,87 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Anna Urik | About</title>
   <meta name="description" content="Photographer, filmmaker, and creative director telling stories through light, sound, and emotion." />
-  <link rel="preload" as="image" href="hero_left_placeholder.webp">
-  <link rel="preload" as="image" href="hero_right_placeholder.webp">
   <style>
-
     :root{
       --bg: #0e0e0e;
       --fg: #ffffff;
-      --muted: #e6e6e6cc; /* translucent */
-      --accent: #e94e4e;  /* red from the comp */
+      --muted: #e6e6e6cc;
+      --accent: #e0332f;
       --hairline: #ffffff26;
       --maxw: 1220px;
     }
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--fg);
-  font-family: "Minima Expanded SSi", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  line-height:1.3;
-  font-synthesis-weight: none; /* avoid fake extra-bold */
-}
+    html, body { height: 100%; margin: 0; }
+    body{
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Minima Expanded SSi", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+      line-height: 1.3;
+      font-synthesis-weight: none;
+    }
 
     /* ====== Layout ====== */
     .hero{
-      min-height: 100svh; /* full viewport including mobile UI */
+      min-height: 100svh;
       display: grid;
-      grid-template-columns: 0.42fr 0.58fr;  /* left ~42%, right ~58% like the mock */
+      grid-template-columns: 0.42fr 0.58fr;
       position: relative;
       isolation: isolate;
     }
-    .panel{
-      position: relative;
-      overflow: hidden;
-    }
+    .panel{ position: relative; overflow: hidden; }
     .panel img.bg{
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;        /* subtle blur for the tiny placeholders */
-      transform: scale(1.05);      /* avoid edge artifacts after blur */
-      will-change: transform, filter;
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      transform: scale(1.05);
     }
-    /* Darken the left side slightly like the comp */
+
     .panel--left::after{
       content: "";
       position: absolute; inset: 0;
       background: radial-gradient(120% 100% at 20% 50%, #00000066 20%, #000000a6 70%);
       pointer-events: none;
     }
-    /* Right side hairline near the top, like the mock */
+
     .panel--right::before{
       content: "";
       position: absolute;
       left: 0; right: 0; top: 3.2rem;
       height: 1px;
       background: var(--hairline);
-      z-index: 1;
+      z-index: 2;
     }
-/* Keep the hairline above the new scrim */
-.panel--right::before{
-  z-index: 2; /* was 1 */
-}
+    .panel--right::after{
+      content: "";
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.42);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .panel--right .bg{
+      filter: brightness(.70) contrast(1.05);
+    }
 
-/* New: subtle dark scrim under the text on the right panel only */
-.panel--right::after{
-  content:"";
-  position:absolute; inset:0;
-  background: rgba(0,0,0,0.42);   /* increase/decrease this alpha as needed */
-  z-index: 1;                      /* above the image, below the content */
-  pointer-events:none;
-}
-
-/* Optional: gently dim the right background image itself */
-.panel--right .bg{
-  filter: brightness(.70) contrast(1.05);
-}
-
-    /* ====== Content on the right panel ====== */
+    /* ====== Content ====== */
     .content{
       position: relative;
       z-index: 2;
@@ -98,7 +79,6 @@ body{
       width: min(90%, var(--maxw));
       margin-left: clamp(16px, 4vw, 60px);
     }
-
     .brand{
       display: block;
       font-weight: 800;
@@ -106,10 +86,8 @@ body{
       letter-spacing: -0.02em;
       line-height: 1.05;
       margin: 0 0 0.5rem;
-      text-wrap: balance;
     }
     .brand .accent{ color: var(--accent); }
-
     .roles{
       margin: 0 0 1.75rem;
       font-size: clamp(0.75rem, 1.4vw, 1rem);
@@ -117,17 +95,15 @@ body{
       text-transform: uppercase;
       opacity: 0.9;
     }
-
     .lead{
       max-width: 62ch;
       margin: 0 0 1.25rem;
       color: var(--muted);
       font-size: clamp(1rem, 1.3vw, 1.125rem);
+      line-height: 1.6;
     }
-
     .contacts{
       display: grid;
-      grid-auto-flow: row;
       gap: 0.85rem;
       margin-top: 1rem;
     }
@@ -140,91 +116,81 @@ body{
       color: var(--fg);
       white-space: nowrap;
     }
-    .contact svg{
-      width: 1.05rem; height: 1.05rem;
-      flex: none;
-      opacity: 0.9;
+    .contact svg{ width: 1.05rem; height: 1.05rem; flex: none; opacity: 0.9; }
+    .contact:hover{ opacity: 0.75; }
+
+    /* ====== Nav pills ====== */
+    .nav-pills{
+      position: fixed;
+      top: 16px; left: 16px;
+      z-index: 9999;
+      display: flex;
+      gap: 8px;
     }
-    .contact:hover{ opacity: 0.9; }
-.back-home{
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 9999;
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .55rem .85rem;
-  border-radius: 999px;
-  background: #00000080;          /* translucent pill */
-  backdrop-filter: blur(6px);
-  color: var(--fg);
-  text-decoration: none;
-  font-weight: 600;
-  border: 1px solid #ffffff22;
-  box-shadow: 0 1px 2px #00000066;
-}
-.back-home:hover{ background:#000000b0; }
-.back-home svg{ width: 1rem; height: 1rem; }
-@media (max-width: 980px){
-  .back-home{ top: 12px; left: 12px; padding: .5rem .75rem; }
-}
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      padding: .55rem .85rem;
+      border-radius: 999px;
+      background: #00000080;
+      backdrop-filter: blur(6px);
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      border: 1px solid #ffffff22;
+      box-shadow: 0 1px 2px #00000066;
+    }
+    .pill:hover{ background: #000000b0; }
 
     /* ====== Responsive ====== */
     @media (max-width: 980px){
+      .nav-pills{ top: 12px; left: 12px; }
+      .pill{ padding: .5rem .75rem; }
       .hero{ grid-template-columns: 1fr; }
-      .panel--left{ display: none; } /* prioritize right panel on mobile */
+      .panel--left{ display: none; }
       .content__inner{ margin: 0; width: 100%; }
       .panel--right::before{ top: 2.6rem; }
-      .contacts{ grid-auto-flow: row; }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      .panel img.bg{ filter: blur(4px); transform: none; }
     }
   </style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
-<a class="back-home" href="/" aria-label="Home">Home</a>
+<nav class="nav-pills" aria-label="Site navigation">
+  <a class="pill" href="/">HOME</a>
+  <a class="pill" href="/content">WORK</a>
+</nav>
 
-
-<main class="hero" aria-label="Intro">
-  <!-- Left image panel (decorative) -->
+<main class="hero" aria-label="About Anna Urik">
   <section class="panel panel--left" aria-hidden="true">
-    <!-- Placeholder image (replace data-full with your hi-res URL when ready) -->
-    <img class="bg" src="photos/about.jpg" alt="" loading="lazy" decoding="async"
-         data-full="">
+    <img class="bg" src="photos/about.jpg" alt="" loading="lazy" decoding="async">
   </section>
 
-  <!-- Right image panel with text overlay -->
   <section class="panel panel--right">
-    <!-- Placeholder image -->
-    <img class="bg" src="photos/profile.jpg" alt="" loading="lazy" decoding="async"
-         data-full="">
+    <img class="bg" src="photos/profile.jpg" alt="" loading="lazy" decoding="async">
     <div class="content">
       <div class="content__inner">
         <h1 class="brand"><span class="accent">Anna</span> <span class="accent"><i>Urik</i></span></h1>
         <p class="roles">Photographer / Videographer</p>
 
         <p class="lead">
-          I’m a photographer, filmmaker, and creative director telling stories through light, sound,
-          and emotion. After sixteen years in London—studying at Goldsmiths and working across music,
-          fashion, and performance—I’ve learned to find truth in movement and beauty in imperfection.
-          I chase the top-shelf cheese in everyday moments—the ones that make life feel cinematic,
+          I'm a photographer, filmmaker, and creative director telling stories through light, sound,
+          and emotion. After sixteen years in London — studying at Goldsmiths and working across music,
+          fashion, and performance — I've learned to find truth in movement and beauty in imperfection.
+          I chase the top-shelf cheese in everyday moments — the ones that make life feel cinematic,
           a little absurd, and completely alive.
         </p>
 
         <div class="contacts" role="list">
           <a class="contact" href="tel:+44723911185" role="listitem" aria-label="Call 723 911185">
-            <!-- phone icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
               <path d="M6.6 10.8c1.5 2.9 3.7 5.1 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.4 21 3 13.6 3 4a1 1 0 0 1 1-1h3.4a1 1 0 0 1 1 1c0 1.28.2 2.48.57 3.6a1 1 0 0 1-.25 1.01L6.6 10.8z"/>
             </svg>
             723 911185
           </a>
-
           <a class="contact" href="mailto:anna@annaurik.com" role="listitem" aria-label="Email anna@annaurik.com">
-            <!-- mail icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
               <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/>
             </svg>
@@ -235,23 +201,5 @@ body{
     </div>
   </section>
 </main>
-
-<!-- Optional progressive enhancement:
-     If you add hi-res URLs to data-full on each .bg image, this script will
-     swap them in once loaded (keeps placeholders as a blur-up). -->
-<script>
-  document.querySelectorAll('img.bg[data-full]').forEach(img => {
-    const full = img.getAttribute('data-full');
-    if (!full) return; // keep placeholder if no hi-res provided yet
-    const hi = new Image();
-    hi.src = full;
-    hi.decoding = "async";
-    hi.onload = () => {
-      img.style.filter = "none";
-      img.style.transform = "none";
-      img.src = full;
-    };
-  });
-</script>
 </body>
 </html>
