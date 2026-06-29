@@ -29,175 +29,61 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
 .back-home:hover{background:#000000b0}
 @media (max-width:980px){.back-home{top:12px;left:12px;padding:.5rem .75rem}}
 
-/* ── Header ── */
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:clamp(72px,8vw,100px) clamp(16px,4vw,32px) clamp(48px,6vw,80px);
+}
+
 .page-header{
-  max-width:var(--maxw);margin:0 auto;
-  padding:clamp(72px,8vw,100px) clamp(16px,4vw,32px) clamp(24px,4vw,40px);
   display:flex;align-items:baseline;gap:clamp(16px,3vw,32px);
+  padding-bottom:clamp(24px,4vw,40px);
   border-bottom:1px solid #ffffff18;
+  margin-bottom:clamp(32px,5vw,56px);
 }
 .case-num{margin:0;color:var(--accent);font-weight:900;font-size:clamp(2.4rem,7vw,6rem);line-height:.9}
 .case-title{margin:0;color:var(--accent);font-weight:900;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(2.4rem,7vw,6rem);line-height:.9}
+
 .lead{
-  max-width:var(--maxw);margin:0 auto;
-  padding:clamp(20px,3vw,32px) clamp(16px,4vw,32px) 0;
-  color:var(--muted);font-size:clamp(1rem,1.35vw,1.15rem);line-height:1.6;
-  max-width:72ch;
+  color:var(--muted);
+  font-size:clamp(1rem,1.35vw,1.15rem);
+  line-height:1.6;
+  max-width:68ch;
+  margin:0 0 clamp(32px,5vw,56px);
 }
 
-/* ── Video grid ── */
-.video-grid{
-  max-width:var(--maxw);margin:0 auto;
-  padding:clamp(32px,4vw,56px) clamp(16px,4vw,32px) clamp(48px,6vw,80px);
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:clamp(12px,2vw,24px);
+.video-feature{
+  position:relative;
+  background:#111;
+  overflow:hidden;
+  border-radius:2px;
 }
-@media (max-width:720px){.video-grid{grid-template-columns:1fr}}
-
-.video-item{position:relative;background:#111;overflow:hidden}
-.video-item.featured{grid-column:1/-1}
-
-.video-item video{
-  width:100%;height:100%;
+.video-feature video{
+  width:100%;
   display:block;
-  object-fit:cover;
   aspect-ratio:16/9;
-  cursor:pointer;
-}
-.video-item.portrait video{aspect-ratio:9/16}
-
-.video-label{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:.5rem .75rem;
-  background:linear-gradient(transparent,rgba(0,0,0,.7));
-  font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
-  color:rgba(255,255,255,.7);
-  pointer-events:none;
+  object-fit:cover;
 }
 </style>
 </head>
 <body>
 <a class="back-home" href="/content" aria-label="Back to Work">WORK</a>
 
-<main>
+<main class="wrap">
   <div class="page-header">
     <h2 class="case-num">03</h2>
     <h1 class="case-title">CALLING</h1>
   </div>
 
-  <p class="lead" style="max-width:var(--maxw);padding-left:clamp(16px,4vw,32px);padding-right:clamp(16px,4vw,32px)">
+  <p class="lead">
     Moving image work spanning beauty, fashion, and portraiture.
     Each film is a collaboration — with a subject, a mood, and a moment that can't be staged.
   </p>
 
-  <div class="video-grid">
-
-    <div class="video-item featured">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/archana_full_corrected.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Archana</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/beauty_1.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Beauty I</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/beauty_2.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Beauty II</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/cleanbeauty_3.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Clean Beauty</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/facefog_1.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Face Fog I</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/facefog_2.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Face Fog II</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/facefog_4.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Face Fog IV</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/linda_3.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Linda III</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/linda_4.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Linda IV</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/redlip_1_2.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Red Lip I</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/redlip_3_2.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Red Lip III</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/romy_full_updated.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Romy</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/lucy.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Lucy</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/suit_2_1.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Suit II</div>
-    </div>
-
-    <div class="video-item">
-      <video controls preload="none" poster="">
-        <source src="videos/calling/suit_3_2.mp4" type="video/mp4">
-      </video>
-      <div class="video-label">Suit III</div>
-    </div>
-
+  <div class="video-feature">
+    <video controls preload="metadata">
+      <source src="videos/calling/callinginsta.mp4" type="video/mp4">
+    </video>
   </div>
 </main>
 </body>
