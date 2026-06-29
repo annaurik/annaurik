@@ -26,13 +26,13 @@ body{
 .back-home{
   position:fixed;top:16px;left:16px;z-index:9999;
   display:inline-flex;align-items:center;
-  padding:.55rem .9rem;border-radius:999px;
-  background:#00000080;color:#fff;text-decoration:none;
-  font-weight:700;text-transform:uppercase;letter-spacing:.02em;
-  border:1px solid #ffffff22;backdrop-filter:blur(6px);
-  box-shadow:0 1px 2px #00000066;
+  padding:12px 4px;
+  color:#171717;text-decoration:none;
+  font-weight:700;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;
 }
-.back-home:hover{background:#000000b0}
+.back-home::before{content:'/';color:#D7302E;margin-right:5px}
+.back-home:hover{opacity:.6}
 
 .wrap{
   max-width:var(--maxw);
