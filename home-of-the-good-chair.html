@@ -89,9 +89,24 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
 }
 @media(max-width:480px){.r-3{grid-template-columns:1fr}}
 
+
+/* Back to top */
+.btt{
+  position:fixed;bottom:24px;right:24px;z-index:999;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;border-radius:50%;
+  background:#00000080;border:1px solid #ffffff22;
+  backdrop-filter:blur(6px);box-shadow:0 1px 4px #00000066;
+  cursor:pointer;opacity:0;pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease;
+  color:#fff;text-decoration:none;
+}
+.btt.visible{opacity:1;pointer-events:auto}
+.btt:hover{background:#000000b0;transform:translateY(-2px)}
+.btt svg{width:16px;height:16px;display:block}
 </style>
 </head>
-<body>
+<body id="top">
 <a class="back-home" href="/content" aria-label="Back to Work">WORK</a>
 
 <main>
@@ -156,5 +171,18 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
   </div>
 
 </main>
+<a class="btt" href="#top" aria-label="Back to top" id="btt">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</a>
+<script>
+(function(){
+  var btn = document.getElementById('btt');
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, {passive:true});
+})();
+</script>
 </body>
 </html>
