@@ -6,125 +6,6 @@
   <title>Anna Urik | About</title>
   <meta name="description" content="Photographer, filmmaker and creative director Anna Urik. Telling stories that connect emotion, identity and style. Based in London." />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <style>
-    :root{
-      --bg:    #0e1114;
-      --fg:    #f4f1ea;
-      --muted: #d7d2c8cc;
-      --accent:#e0332f;
-      --maxw:  1280px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg)}
-    body{
-      font-family:"Minima Expanded SSi",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial;
-      line-height:1.4;
-    }
-
-    /* ── Nav pills ── */
-    .nav-pills{
-      position:fixed;top:16px;left:16px;z-index:9999;
-      display:flex;gap:8px;
-    }
-    .pill{
-      display:inline-flex;align-items:center;
-      padding:.55rem .85rem;border-radius:999px;
-      background:#00000080;backdrop-filter:blur(6px);
-      color:#fff;text-decoration:none;
-      font-weight:700;font-size:.8rem;letter-spacing:.06em;
-      text-transform:uppercase;border:1px solid #ffffff22;
-      box-shadow:0 1px 2px #00000066;
-    }
-    .pill:hover{background:#000000b0}
-    @media(max-width:600px){.nav-pills{top:12px;left:12px}}
-
-    /* ── Layout ── */
-    .wrap{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      min-height:100vh;
-      align-items:stretch;
-    }
-    @media(max-width:900px){
-      .wrap{grid-template-columns:1fr}
-    }
-
-    /* ── Left column ── */
-    .left{
-      display:flex;flex-direction:column;gap:clamp(20px,3vw,36px);
-      padding:clamp(80px,8vw,120px) clamp(24px,5vw,56px) clamp(48px,6vw,80px);
-      justify-content:center;
-      background:var(--bg);
-      border-right:2px solid var(--accent);
-    }
-
-    .headline{margin:0}
-    .headline .line{
-      display:block;
-      font-weight:900;
-      color:var(--accent);
-      font-size:clamp(3.2rem,8vw,7rem);
-      line-height:.92;
-      letter-spacing:-.01em;
-      text-transform:uppercase;
-    }
-    .headline .l1{padding-left:0}
-    .headline .l2{padding-left:clamp(1.2rem,4vw,3.5rem)}
-    .headline .l3{padding-left:clamp(2.4rem,8vw,7rem)}
-
-    .sub{
-      margin:0;
-      font-size:clamp(.7rem,1.1vw,.85rem);
-      font-weight:800;
-      letter-spacing:.2em;
-      text-transform:uppercase;
-      color:var(--fg);
-    }
-    .sub span{margin:0 .5em;opacity:.4}
-
-    .descriptor{
-      margin:0;
-      font-size:clamp(.7rem,1.1vw,.85rem);
-      font-weight:700;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-
-    .contacts{display:flex;flex-direction:column;gap:1.1rem;margin-top:.5rem}
-    .contact{
-      display:inline-flex;align-items:center;gap:.7rem;
-      text-decoration:none;color:var(--fg);
-      font-weight:700;font-size:clamp(.9rem,1.3vw,1.05rem);
-    }
-    .contact:hover{color:var(--accent)}
-    .contact svg{width:1.1rem;height:1.1rem;flex:none;opacity:.7}
-    .contact-label{
-      display:block;
-      font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
-      color:var(--muted);font-weight:600;margin-bottom:.15rem;opacity:.7;
-    }
-
-    /* ── Right column — full-height portrait ── */
-    .images{
-      position:relative;
-      overflow:hidden;
-      min-height:50vh;
-    }
-    .images img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:78% center;
-      filter:grayscale(1) contrast(1.05);
-      display:block;
-    }
-    @media(max-width:900px){
-      .images{min-height:60vw}
-    }
-  </style>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Anna Urik">
   <meta property="og:title" content="About | Anna Urik">
@@ -148,6 +29,104 @@
     "knowsAbout": ["Photography", "Videography", "Creative Direction", "Fashion Photography", "Theatre Photography", "Film"]
   }
   </script>
+  <style>
+    :root{
+      --bg:    #0e1114;
+      --fg:    #f4f1ea;
+      --muted: #d7d2c8cc;
+      --accent:#e0332f;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg)}
+    body{
+      font-family:"Minima Expanded SSi",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial;
+      line-height:1.4;
+    }
+
+    /* ── Nav pills ── */
+    .nav-pills{position:fixed;top:16px;left:16px;z-index:9999;display:flex;gap:8px}
+    .pill{
+      display:inline-flex;align-items:center;
+      padding:.55rem .85rem;border-radius:999px;
+      background:#00000080;backdrop-filter:blur(6px);
+      color:#fff;text-decoration:none;
+      font-weight:700;font-size:.8rem;letter-spacing:.06em;
+      text-transform:uppercase;border:1px solid #ffffff22;
+      box-shadow:0 1px 2px #00000066;
+    }
+    .pill:hover{background:#000000b0}
+    @media(max-width:600px){.nav-pills{top:12px;left:12px}}
+
+    /* ── Layout ── */
+    .wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      min-height:100vh;
+      align-items:stretch;
+    }
+    @media(max-width:900px){.wrap{grid-template-columns:1fr}}
+
+    /* ── Left column ── */
+    .left{
+      display:flex;flex-direction:column;gap:clamp(20px,3vw,36px);
+      padding:clamp(80px,8vw,120px) clamp(24px,5vw,56px) clamp(48px,6vw,80px);
+      justify-content:center;
+      background:var(--bg);
+      border-right:2px solid var(--accent);
+    }
+
+    /* Staircase headline */
+    .headline{margin:0}
+    .headline .line{
+      display:block;
+      font-weight:900;
+      color:var(--accent);
+      font-size:clamp(3.2rem,8vw,7rem);
+      line-height:.92;
+      letter-spacing:-.01em;
+      text-transform:uppercase;
+    }
+    .headline .l1{padding-left:0}
+    .headline .l2{padding-left:clamp(1.2rem,4vw,3.5rem)}
+    .headline .l3{padding-left:clamp(2.4rem,8vw,7rem)}
+
+    .sub{
+      margin:0;font-size:clamp(.7rem,1.1vw,.85rem);
+      font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);
+    }
+    .sub span{margin:0 .5em;opacity:.4}
+
+    .descriptor{
+      margin:0;font-size:clamp(.7rem,1.1vw,.85rem);
+      font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+    }
+
+    .contacts{display:flex;flex-direction:column;gap:1.1rem;margin-top:.5rem}
+    .contact{
+      display:inline-flex;align-items:center;gap:.7rem;
+      text-decoration:none;color:var(--fg);
+      font-weight:700;font-size:clamp(.9rem,1.3vw,1.05rem);
+    }
+    .contact:hover{color:var(--accent)}
+    .contact svg{width:1.1rem;height:1.1rem;flex:none;opacity:.7}
+    .contact-label{
+      display:block;font-size:.7rem;letter-spacing:.12em;
+      text-transform:uppercase;color:var(--muted);font-weight:600;
+      margin-bottom:.15rem;opacity:.7;
+    }
+
+    /* ── Right column ── */
+    .images{position:relative;overflow:hidden;min-height:50vh}
+    .images img{
+      position:absolute;inset:0;
+      width:100%;height:100%;
+      object-fit:cover;
+      object-position:78% center;
+      filter:grayscale(1) contrast(1.05);
+      display:block;
+    }
+    @media(max-width:900px){.images{min-height:60vw}}
+  </style>
 </head>
 <body>
 <nav class="nav-pills" aria-label="Site navigation">
@@ -191,4 +170,11 @@
     </div>
   </div>
 
-  <!-- RIGHT -
+  <!-- RIGHT -->
+  <div class="images">
+    <img src="photos/profile.jpg" alt="Anna Urik" loading="eager" decoding="async">
+  </div>
+
+</main>
+</body>
+</html>
