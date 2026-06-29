@@ -18,7 +18,6 @@
 html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);
   font-family:"Minima Expanded SSi",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial;
 }
-
 .back-home{
   position:fixed;top:16px;left:16px;z-index:10;
   display:inline-flex;align-items:center;
@@ -29,8 +28,6 @@ html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);
   box-shadow:0 1px 2px #00000066;
 }
 .back-home:hover{background:#000000b0}
-
-/* ── Header ── */
 .page-header{
   padding:clamp(72px,8vw,100px) clamp(32px,5vw,64px) clamp(20px,3vw,32px);
   display:flex;align-items:baseline;justify-content:space-between;
@@ -39,78 +36,36 @@ html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);
 .title-group{display:flex;align-items:baseline;gap:clamp(12px,2vw,24px)}
 .case-num{margin:0;color:var(--accent);font-weight:900;font-size:clamp(2rem,5vw,4.5rem);line-height:.9}
 .case-title{margin:0;color:var(--accent);font-weight:900;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(2rem,5vw,4.5rem);line-height:.9}
-.lead-header{
-  max-width:38ch;text-align:right;
-  font-size:clamp(.75rem,1.1vw,.9rem);
-  color:var(--muted);letter-spacing:.04em;
-  line-height:1.6;
-  align-self:center;
-}
+.lead-header{max-width:38ch;text-align:right;font-size:clamp(.75rem,1.1vw,.9rem);color:var(--muted);letter-spacing:.04em;line-height:1.6;align-self:center}
 @media(max-width:768px){.lead-header{display:none}}
-
-/* ── Slider area ── */
 .slider-wrap{
   display:grid;
   grid-template-columns:clamp(40px,5vw,72px) 1fr clamp(40px,5vw,72px);
   align-items:center;
-  gap:0;
   padding:clamp(32px,5vw,64px) 0;
   max-width:1200px;
   margin:0 auto;
 }
-
-/* Arrow buttons */
 .arrow{
-  display:flex;align-items:center;justify-content:center;
-  height:100%;
-  background:none;border:none;cursor:pointer;
-  color:var(--fg);opacity:.5;
-  transition:opacity .2s ease;
-  padding:0;
+  display:flex;align-items:center;justify-content:center;height:100%;
+  background:none;border:none;cursor:pointer;color:var(--fg);opacity:.5;
+  transition:opacity .2s ease;padding:0;
 }
 .arrow:hover:not(:disabled){opacity:1}
 .arrow:disabled{opacity:.15;cursor:default}
 .arrow svg{width:clamp(20px,2.5vw,32px);height:clamp(20px,2.5vw,32px)}
-
-/* Slides */
 .slides-area{position:relative}
 .slide{display:none}
 .slide.active{display:block}
-.slide video{
-  width:100%;display:block;
-  background:#111;
-  max-height:78vh;
-}
-
-/* ── Footer bar ── */
+.slide video{width:100%;display:block;background:#111;max-height:78vh}
 .footer-bar{
   display:flex;align-items:center;gap:clamp(16px,3vw,40px);
   padding:0 clamp(32px,5vw,64px) clamp(48px,6vw,80px);
-  max-width:1200px;
-  margin:0 auto;
+  max-width:1200px;margin:0 auto;
 }
-
-/* Progress track */
-.track{
-  flex:1;height:1px;
-  background:var(--rule);
-  position:relative;
-  cursor:pointer;
-}
-.track-fill{
-  position:absolute;top:0;left:0;height:100%;
-  background:var(--accent);
-  transition:width .35s ease;
-}
-
-/* Big typographic counter */
-.counter{
-  font-weight:900;
-  font-size:clamp(1rem,2.2vw,1.6rem);
-  letter-spacing:.04em;
-  white-space:nowrap;
-  flex-shrink:0;
-}
+.track{flex:1;height:1px;background:var(--rule);position:relative}
+.track-fill{position:absolute;top:0;left:0;height:100%;background:var(--accent);transition:width .35s ease}
+.counter{font-weight:900;font-size:clamp(1rem,2.2vw,1.6rem);letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
 .counter .cur{color:var(--fg)}
 .counter .sep{color:var(--rule);margin:0 .3em}
 .counter .tot{color:var(--muted);font-size:.7em}
@@ -128,42 +83,39 @@ html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);
 </div>
 
 <div class="slider-wrap">
-
   <button class="arrow" id="prev" aria-label="Previous" disabled>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
   </button>
 
   <div class="slides-area">
     <div class="slides" id="slides">
 
       <div class="slide active">
-        <video controls preload="metadata">
+        <video controls preload="metadata" poster="photos/calling/callinginsta.jpg">
           <source src="videos/calling/callinginsta.mp4" type="video/mp4">
         </video>
       </div>
 
       <div class="slide">
-        <video controls preload="none">
+        <video controls preload="none" poster="photos/calling/redlip_32.jpg">
           <source src="videos/calling/redlip_32.mp4" type="video/mp4">
         </video>
       </div>
 
       <div class="slide">
-        <video controls preload="none">
-          <source src="videos/calling/suit_3.mp4" type="video/mp4">
+        <video controls preload="none" poster="photos/calling/suit_3.jpg">
+          <source src="videos/calling/calling_suit3.mp4" type="video/mp4">
         </video>
       </div>
 
       <div class="slide">
-        <video controls preload="none">
-          <source src="videos/calling/cleanbeauty_3.mp4" type="video/mp4">
+        <video controls preload="none" poster="photos/calling/cleanbeauty_3.jpg">
+          <source src="videos/calling/calling_cleanbeauty.mp4" type="video/mp4">
         </video>
       </div>
 
       <div class="slide">
-        <video controls preload="none">
+        <video controls preload="none" poster="photos/calling/suit_32.jpg">
           <source src="videos/calling/suit_32.mp4" type="video/mp4">
         </video>
       </div>
@@ -172,11 +124,8 @@ html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);
   </div>
 
   <button class="arrow" id="next" aria-label="Next">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="9 18 15 12 9 6"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
   </button>
-
 </div>
 
 <div class="footer-bar">
@@ -190,13 +139,13 @@ html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);
 
 <script>
 (function(){
-  const slides  = document.querySelectorAll('.slide');
-  const total   = slides.length;
-  const prev    = document.getElementById('prev');
-  const next    = document.getElementById('next');
-  const curEl   = document.getElementById('current');
-  const fill    = document.getElementById('progress');
-  let cur = 0;
+  var slides = document.querySelectorAll('.slide');
+  var total  = slides.length;
+  var prev   = document.getElementById('prev');
+  var next   = document.getElementById('next');
+  var curEl  = document.getElementById('current');
+  var fill   = document.getElementById('progress');
+  var cur    = 0;
 
   function pad(n){ return (n<10?'0':'')+n; }
 
@@ -205,16 +154,17 @@ html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);
     slides[cur].classList.remove('active');
     cur = n;
     slides[cur].classList.add('active');
+    var vid = slides[cur].querySelector('video');
+    if(vid){ vid.currentTime=0; vid.play().catch(function(){}); }
     curEl.textContent = pad(cur+1);
     prev.disabled = cur===0;
     next.disabled  = cur===total-1;
     fill.style.width = ((cur+1)/total*100)+'%';
   }
 
-  prev.addEventListener('click', ()=>{ if(cur>0) go(cur-1); });
-  next.addEventListener('click', ()=>{ if(cur<total-1) go(cur+1); });
-
-  document.addEventListener('keydown', e=>{
+  prev.addEventListener('click', function(){ if(cur>0) go(cur-1); });
+  next.addEventListener('click', function(){ if(cur<total-1) go(cur+1); });
+  document.addEventListener('keydown', function(e){
     if(e.key==='ArrowRight' && cur<total-1) go(cur+1);
     if(e.key==='ArrowLeft'  && cur>0)       go(cur-1);
   });
