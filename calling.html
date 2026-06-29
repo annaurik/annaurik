@@ -9,14 +9,15 @@
 <style>
 :root{
   --bg:#0e0e0e;
-  --fg:#f3f3f3;
-  --muted:#e8e8e8cc;
+  --fg:#f4f1ea;
+  --muted:#d7d2c8;
   --accent:#E0332F;
-  --maxw:1320px;
+  --rule:#ffffff18;
 }
 *{box-sizing:border-box}
-html,body{height:100%;margin:0}
-body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-system,"Segoe UI",Inter,Arial,sans-serif}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);
+  font-family:"Minima Expanded SSi",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial;
+}
 
 .back-home{
   position:fixed;top:16px;left:16px;z-index:10;
@@ -28,134 +29,198 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
   box-shadow:0 1px 2px #00000066;
 }
 .back-home:hover{background:#000000b0}
-@media(max-width:980px){.back-home{top:12px;left:12px;padding:.5rem .75rem}}
 
-.wrap{
-  max-width:var(--maxw);
-  margin:0 auto;
-  padding:clamp(72px,8vw,100px) clamp(16px,4vw,32px) clamp(48px,6vw,80px);
-}
-
+/* ── Header ── */
 .page-header{
-  display:flex;align-items:baseline;gap:clamp(16px,3vw,32px);
-  padding-bottom:clamp(24px,4vw,40px);
-  border-bottom:1px solid #ffffff18;
-  margin-bottom:clamp(32px,5vw,56px);
+  padding:clamp(72px,8vw,100px) clamp(32px,5vw,64px) clamp(20px,3vw,32px);
+  display:flex;align-items:baseline;justify-content:space-between;
+  border-bottom:1px solid var(--rule);
 }
-.case-num{margin:0;color:var(--accent);font-weight:900;font-size:clamp(2.4rem,7vw,6rem);line-height:.9}
-.case-title{margin:0;color:var(--accent);font-weight:900;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(2.4rem,7vw,6rem);line-height:.9}
-
-.lead{
-  color:var(--muted);
-  font-size:clamp(1rem,1.35vw,1.15rem);
+.title-group{display:flex;align-items:baseline;gap:clamp(12px,2vw,24px)}
+.case-num{margin:0;color:var(--accent);font-weight:900;font-size:clamp(2rem,5vw,4.5rem);line-height:.9}
+.case-title{margin:0;color:var(--accent);font-weight:900;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(2rem,5vw,4.5rem);line-height:.9}
+.lead-header{
+  max-width:38ch;text-align:right;
+  font-size:clamp(.75rem,1.1vw,.9rem);
+  color:var(--muted);letter-spacing:.04em;
   line-height:1.6;
-  max-width:68ch;
-  margin:0 0 clamp(40px,6vw,72px);
+  align-self:center;
 }
+@media(max-width:768px){.lead-header{display:none}}
 
-/* ── Video grid ── */
-.grid{
+/* ── Slider area ── */
+.slider-wrap{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:clamp(10px,1.8vw,20px);
-  align-items:start;
+  grid-template-columns:clamp(40px,5vw,72px) 1fr clamp(40px,5vw,72px);
+  align-items:center;
+  gap:0;
+  padding:clamp(32px,5vw,64px) 0;
+  max-width:1200px;
+  margin:0 auto;
 }
 
-/* Portrait video takes one column and is taller */
-.v-portrait{grid-row:span 2}
-.v-portrait video{aspect-ratio:9/16;width:100%;display:block;background:#111}
+/* Arrow buttons */
+.arrow{
+  display:flex;align-items:center;justify-content:center;
+  height:100%;
+  background:none;border:none;cursor:pointer;
+  color:var(--fg);opacity:.5;
+  transition:opacity .2s ease;
+  padding:0;
+}
+.arrow:hover:not(:disabled){opacity:1}
+.arrow:disabled{opacity:.15;cursor:default}
+.arrow svg{width:clamp(20px,2.5vw,32px);height:clamp(20px,2.5vw,32px)}
 
-/* Landscape videos */
-.v-land video{aspect-ratio:16/9;width:100%;display:block;background:#111}
-
-/* One video featured full-width at the bottom */
-.v-full{grid-column:1/-1}
-.v-full video{aspect-ratio:16/9;width:100%;display:block;background:#111}
-
-@media(max-width:640px){
-  .grid{grid-template-columns:1fr}
-  .v-portrait{grid-row:auto}
-  .v-portrait video{aspect-ratio:4/5}
-  .v-full{grid-column:auto}
+/* Slides */
+.slides-area{position:relative}
+.slide{display:none}
+.slide.active{display:block}
+.slide video{
+  width:100%;display:block;
+  background:#111;
+  max-height:78vh;
 }
 
-/* Back to top */
-.btt{
-  position:fixed;bottom:24px;right:24px;z-index:999;
-  display:inline-flex;align-items:center;justify-content:center;
-  width:42px;height:42px;border-radius:50%;
-  background:#00000080;border:1px solid #ffffff22;
-  backdrop-filter:blur(6px);box-shadow:0 1px 4px #00000066;
-  cursor:pointer;opacity:0;pointer-events:none;
-  transition:opacity .3s ease,transform .3s ease;
-  color:#fff;text-decoration:none;
+/* ── Footer bar ── */
+.footer-bar{
+  display:flex;align-items:center;gap:clamp(16px,3vw,40px);
+  padding:0 clamp(32px,5vw,64px) clamp(48px,6vw,80px);
+  max-width:1200px;
+  margin:0 auto;
 }
-.btt.visible{opacity:1;pointer-events:auto}
-.btt:hover{background:#000000b0;transform:translateY(-2px)}
-.btt svg{width:16px;height:16px;display:block}
+
+/* Progress track */
+.track{
+  flex:1;height:1px;
+  background:var(--rule);
+  position:relative;
+  cursor:pointer;
+}
+.track-fill{
+  position:absolute;top:0;left:0;height:100%;
+  background:var(--accent);
+  transition:width .35s ease;
+}
+
+/* Big typographic counter */
+.counter{
+  font-weight:900;
+  font-size:clamp(1rem,2.2vw,1.6rem);
+  letter-spacing:.04em;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.counter .cur{color:var(--fg)}
+.counter .sep{color:var(--rule);margin:0 .3em}
+.counter .tot{color:var(--muted);font-size:.7em}
 </style>
 </head>
-<body id="top">
+<body>
 <a class="back-home" href="/content" aria-label="Back to Work">WORK</a>
 
-<main class="wrap">
-  <div class="page-header">
+<div class="page-header">
+  <div class="title-group">
     <h2 class="case-num">05</h2>
     <h1 class="case-title">CALLING</h1>
   </div>
+  <p class="lead-header">Moving image work spanning beauty,<br>fashion, and portraiture.</p>
+</div>
 
-  <p class="lead">
-    Moving image work spanning beauty, fashion, and portraiture.
-    Each film is a collaboration — with a subject, a mood, and a moment that can't be staged.
-  </p>
+<div class="slider-wrap">
 
-  <div class="grid">
+  <button class="arrow" id="prev" aria-label="Previous" disabled>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
 
-    <!-- Portrait — spans 2 rows -->
-    <div class="v-portrait">
-      <video controls preload="metadata">
-        <source src="videos/calling/callinginsta.mp4" type="video/mp4">
-      </video>
+  <div class="slides-area">
+    <div class="slides" id="slides">
+
+      <div class="slide active">
+        <video controls preload="metadata">
+          <source src="videos/calling/callinginsta.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="slide">
+        <video controls preload="none">
+          <source src="videos/calling/redlip_32.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="slide">
+        <video controls preload="none">
+          <source src="videos/calling/suit_3.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="slide">
+        <video controls preload="none">
+          <source src="videos/calling/cleanbeauty_3.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="slide">
+        <video controls preload="none">
+          <source src="videos/calling/suit_32.mp4" type="video/mp4">
+        </video>
+      </div>
+
     </div>
-
-    <!-- Two landscape videos stacked in second column -->
-    <div class="v-land">
-      <video controls preload="none">
-        <source src="videos/calling/redlip_32.mp4" type="video/mp4">
-      </video>
-    </div>
-
-    <div class="v-land">
-      <video controls preload="none">
-        <source src="videos/calling/suit_3.mp4" type="video/mp4">
-      </video>
-    </div>
-
-    <!-- Two more landscape side by side -->
-    <div class="v-land">
-      <video controls preload="none">
-        <source src="videos/calling/cleanbeauty_3.mp4" type="video/mp4">
-      </video>
-    </div>
-
-    <div class="v-land">
-      <video controls preload="none">
-        <source src="videos/calling/suit_32.mp4" type="video/mp4">
-      </video>
-    </div>
-
   </div>
-</main>
 
-<a class="btt" href="#top" aria-label="Back to top" id="btt">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="18 15 12 9 6 15"/>
-  </svg>
-</a>
+  <button class="arrow" id="next" aria-label="Next">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"/>
+    </svg>
+  </button>
+
+</div>
+
+<div class="footer-bar">
+  <div class="counter">
+    <span class="cur" id="current">01</span><span class="sep">/</span><span class="tot" id="total">05</span>
+  </div>
+  <div class="track">
+    <div class="track-fill" id="progress"></div>
+  </div>
+</div>
+
 <script>
 (function(){
-  var btn=document.getElementById('btt');
-  window.addEventListener('scroll',function(){btn.classList.toggle('visible',window.scrollY>400)},{passive:true});
+  const slides  = document.querySelectorAll('.slide');
+  const total   = slides.length;
+  const prev    = document.getElementById('prev');
+  const next    = document.getElementById('next');
+  const curEl   = document.getElementById('current');
+  const fill    = document.getElementById('progress');
+  let cur = 0;
+
+  function pad(n){ return (n<10?'0':'')+n; }
+
+  function go(n){
+    slides[cur].querySelector('video').pause();
+    slides[cur].classList.remove('active');
+    cur = n;
+    slides[cur].classList.add('active');
+    curEl.textContent = pad(cur+1);
+    prev.disabled = cur===0;
+    next.disabled  = cur===total-1;
+    fill.style.width = ((cur+1)/total*100)+'%';
+  }
+
+  prev.addEventListener('click', ()=>{ if(cur>0) go(cur-1); });
+  next.addEventListener('click', ()=>{ if(cur<total-1) go(cur+1); });
+
+  document.addEventListener('keydown', e=>{
+    if(e.key==='ArrowRight' && cur<total-1) go(cur+1);
+    if(e.key==='ArrowLeft'  && cur>0)       go(cur-1);
+  });
+
+  document.getElementById('total').textContent = pad(total);
+  fill.style.width = (1/total*100)+'%';
 })();
 </script>
 </body>
