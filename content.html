@@ -41,8 +41,9 @@ body{
   margin:0 auto;
   padding:clamp(56px,6vw,80px) clamp(16px,4vw,32px);
   display:grid;
-  grid-template-columns:0.9fr 1.1fr;
-  gap:clamp(24px,4vw,56px);
+  grid-template-columns:1fr 1fr;
+  gap:clamp(24px,4vw,64px);
+  align-items:start;
 }
 @media (max-width:1020px){.wrap{grid-template-columns:1fr}}
 
@@ -87,11 +88,9 @@ body{
 .block h3 a:focus-visible::after{transform:scaleX(1)}
 .block p{margin:0;color:var(--muted);font-size:clamp(1.06rem,1.55vw,1.18rem);line-height:1.45}
 
-/* Right mosaic */
-.mosaic{columns:2;column-gap:clamp(12px,2.4vw,24px)}
-.cell{break-inside:avoid;margin-bottom:clamp(12px,2.4vw,24px);overflow:hidden}
-.cell img{width:100%;height:auto;display:block}
-@media (max-width:720px){.mosaic{columns:1}}
+/* Right image */
+.hero-img{margin:0}
+.hero-img img{width:100%;height:auto;display:block}
 </style>
 </head>
 <body>
@@ -130,21 +129,10 @@ body{
     </ol>
   </section>
 
-  <!-- RIGHT: image mosaic -->
-  <section class="mosaic" aria-label="Selected work">
-    <figure class="cell">
-      <img src="photos/gg/gg_28.webp" alt="Gentle Gesture" loading="lazy" decoding="async">
-    </figure>
-    <figure class="cell">
-      <img src="photos/salina/salina_01.webp" alt="Salina" loading="lazy" decoding="async">
-    </figure>
-    <figure class="cell">
-      <img src="photos/chair/chair_04.webp" alt="Home of the Good Chair" loading="lazy" decoding="async">
-    </figure>
-    <figure class="cell">
-      <img src="photos/gg/gg_12.webp" alt="Gentle Gesture" loading="lazy" decoding="async">
-    </figure>
-  </section>
+  <!-- RIGHT: single strong image -->
+  <figure class="hero-img" aria-label="Selected work">
+    <img src="photos/chair/chair_07.webp" alt="Home of the Good Chair" loading="lazy" decoding="async">
+  </figure>
 </main>
 </body>
 </html>
