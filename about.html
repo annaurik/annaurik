@@ -5,158 +5,114 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Anna Urik | About</title>
   <meta name="description" content="Photographer, filmmaker, and creative director telling stories through light, sound, and emotion." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <style>
     :root{
-      --bg: #0e0e0e;
-      --fg: #ffffff;
-      --muted: #e6e6e6cc;
-      --accent: #e0332f;
-      --hairline: #ffffff26;
-      --maxw: 1220px;
+      --cream: #F6F2E2;
+      --ink:   #171717;
+      --muted: #2d2d2dcc;
+      --accent:#e0332f;
+      --maxw:  1280px;
     }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--cream);color:var(--ink)}
     body{
-      background: var(--bg);
-      color: var(--fg);
-      font-family: "Minima Expanded SSi", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
-      line-height: 1.3;
-      font-synthesis-weight: none;
+      font-family:"Minima Expanded SSi",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial;
+      line-height:1.4;
     }
 
-    /* ====== Layout ====== */
-    .hero{
-      min-height: 100svh;
-      display: grid;
-      grid-template-columns: 0.42fr 0.58fr;
-      position: relative;
-      isolation: isolate;
-    }
-    .panel{ position: relative; overflow: hidden; }
-    .panel img.bg{
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
-      transform: scale(1.05);
-    }
-
-    .panel--left::after{
-      content: "";
-      position: absolute; inset: 0;
-      background: radial-gradient(120% 100% at 20% 50%, #00000066 20%, #000000a6 70%);
-      pointer-events: none;
-    }
-
-    .panel--right::before{
-      content: "";
-      position: absolute;
-      left: 0; right: 0; top: 3.2rem;
-      height: 1px;
-      background: var(--hairline);
-      z-index: 2;
-    }
-    .panel--right::after{
-      content: "";
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.42);
-      z-index: 1;
-      pointer-events: none;
-    }
-    .panel--right .bg{
-      filter: brightness(.70) contrast(1.05);
-      object-position: 65% center;
-    }
-
-    /* ====== Content ====== */
-    .content{
-      position: relative;
-      z-index: 2;
-      padding: clamp(20px, 3vw, 40px);
-      display: grid;
-      align-content: center;
-      min-height: 100%;
-    }
-    .content__inner{
-      width: min(90%, var(--maxw));
-      margin-left: clamp(16px, 4vw, 60px);
-    }
-    .brand{
-      display: block;
-      font-weight: 800;
-      font-size: clamp(2.2rem, 6vw, 4.2rem);
-      letter-spacing: -0.02em;
-      line-height: 1.05;
-      margin: 0 0 0.5rem;
-    }
-    .brand .accent{ color: var(--accent); }
-    .roles{
-      margin: 0 0 1.75rem;
-      font-size: clamp(0.75rem, 1.4vw, 1rem);
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      opacity: 0.9;
-    }
-    .lead{
-      max-width: 62ch;
-      margin: 0 0 1.25rem;
-      color: var(--muted);
-      font-size: clamp(1rem, 1.3vw, 1.125rem);
-      line-height: 1.6;
-    }
-    .contacts{
-      display: grid;
-      gap: 0.85rem;
-      margin-top: 1rem;
-    }
-    .contact{
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-weight: 600;
-      text-decoration: none;
-      color: var(--fg);
-      white-space: nowrap;
-    }
-    .contact svg{ width: 1.05rem; height: 1.05rem; flex: none; opacity: 0.9; }
-    .contact:hover{ opacity: 0.75; }
-
-    /* ====== Nav pills ====== */
+    /* ── Nav pills ── */
     .nav-pills{
-      position: fixed;
-      top: 16px; left: 16px;
-      z-index: 9999;
-      display: flex;
-      gap: 8px;
+      position:fixed;top:16px;left:16px;z-index:9999;
+      display:flex;gap:8px;
     }
     .pill{
-      display: inline-flex;
-      align-items: center;
-      padding: .55rem .85rem;
-      border-radius: 999px;
-      background: #00000080;
-      backdrop-filter: blur(6px);
-      color: var(--fg);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: .85rem;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      border: 1px solid #ffffff22;
-      box-shadow: 0 1px 2px #00000066;
+      display:inline-flex;align-items:center;
+      padding:.55rem .85rem;border-radius:999px;
+      background:#00000080;backdrop-filter:blur(6px);
+      color:#fff;text-decoration:none;
+      font-weight:700;font-size:.8rem;letter-spacing:.06em;
+      text-transform:uppercase;border:1px solid #ffffff22;
+      box-shadow:0 1px 2px #00000066;
     }
-    .pill:hover{ background: #000000b0; }
+    .pill:hover{background:#000000b0}
+    @media(max-width:600px){.nav-pills{top:12px;left:12px}}
 
-    /* ====== Responsive ====== */
-    @media (max-width: 980px){
-      .nav-pills{ top: 12px; left: 12px; }
-      .pill{ padding: .5rem .75rem; }
-      .hero{ grid-template-columns: 1fr; }
-      .panel--left{ display: none; }
-      .content__inner{ margin: 0; width: 100%; }
-      .panel--right::before{ top: 2.6rem; }
+    /* ── Layout ── */
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:clamp(80px,8vw,120px) clamp(24px,5vw,64px) clamp(48px,6vw,80px);
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:clamp(32px,5vw,80px);
+      align-items:start;
+      min-height:100vh;
+    }
+    @media(max-width:900px){
+      .wrap{grid-template-columns:1fr;min-height:auto}
+    }
+
+    /* ── Left column ── */
+    .left{display:flex;flex-direction:column;gap:clamp(20px,3vw,36px)}
+
+    .headline{
+      margin:0;
+      font-weight:900;
+      color:var(--accent);
+      font-size:clamp(3.2rem,8vw,7rem);
+      line-height:.9;
+      letter-spacing:-.01em;
+      text-transform:uppercase;
+    }
+
+    .sub{
+      margin:0;
+      font-size:clamp(.7rem,1.1vw,.85rem);
+      font-weight:800;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--ink);
+    }
+    .sub span{margin:0 .5em;opacity:.4}
+
+    .descriptor{
+      margin:0;
+      font-size:clamp(.7rem,1.1vw,.85rem);
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .contacts{display:flex;flex-direction:column;gap:1.1rem;margin-top:.5rem}
+    .contact{
+      display:inline-flex;align-items:center;gap:.7rem;
+      text-decoration:none;color:var(--ink);
+      font-weight:700;font-size:clamp(.9rem,1.3vw,1.05rem);
+    }
+    .contact:hover{color:var(--accent)}
+    .contact svg{width:1.1rem;height:1.1rem;flex:none;opacity:.7}
+    .contact-label{
+      display:block;
+      font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+      color:var(--muted);font-weight:600;margin-bottom:.15rem;
+    }
+
+    /* ── Right column — image collage ── */
+    .images{display:flex;flex-direction:column;gap:clamp(10px,1.8vw,20px)}
+    .img-top{width:100%;overflow:hidden}
+    .img-top img{width:100%;height:auto;display:block}
+    .img-bottom{width:72%;overflow:hidden}
+    .img-bottom img{width:100%;height:auto;display:block}
+
+    @media(max-width:900px){
+      .img-bottom{width:60%}
+    }
+    @media(max-width:600px){
+      .img-bottom{width:80%}
     }
   </style>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
 <nav class="nav-pills" aria-label="Site navigation">
@@ -164,43 +120,59 @@
   <a class="pill" href="/content">WORK</a>
 </nav>
 
-<main class="hero" aria-label="About Anna Urik">
-  <section class="panel panel--left" aria-hidden="true">
-    <img class="bg" src="photos/about.jpg" alt="" loading="lazy" decoding="async">
-  </section>
+<main class="wrap">
 
-  <section class="panel panel--right">
-    <img class="bg" src="photos/profile.jpg" alt="" loading="lazy" decoding="async">
-    <div class="content">
-      <div class="content__inner">
-        <h1 class="brand"><span class="accent">Anna</span> <span class="accent"><i>Urik</i></span></h1>
-        <p class="roles">Photographer / Videographer</p>
+  <!-- LEFT -->
+  <div class="left">
+    <h1 class="headline">MAKE<br>THEM<br>FEEL...</h1>
 
-        <p class="lead">
-          I'm a photographer, filmmaker, and creative director telling stories through light, sound,
-          and emotion. After sixteen years in London — studying at Goldsmiths and working across music,
-          fashion, and performance — I've learned to find truth in movement and beauty in imperfection.
-          I chase the top-shelf cheese in everyday moments — the ones that make life feel cinematic,
-          a little absurd, and completely alive.
-        </p>
+    <p class="sub">Photography<span>·</span>Film<span>·</span>Creative Direction</p>
+    <p class="descriptor">Telling stories that connect emotion, identity and style.</p>
 
-        <div class="contacts" role="list">
-          <a class="contact" href="https://www.instagram.com/anna.urik/" role="listitem" aria-label="Instagram — anna.urik" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-            anna.urik
-          </a>
-          <a class="contact" href="mailto:anna@annaurik.com" role="listitem" aria-label="Email anna@annaurik.com">
-            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-              <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/>
-            </svg>
-            anna@annaurik.com
-          </a>
-        </div>
-      </div>
+    <div class="contacts">
+      <a class="contact" href="https://www.annaurik.com" aria-label="Website">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span>
+          <span class="contact-label">Website</span>
+          www.annaurik.com
+        </span>
+      </a>
+
+      <a class="contact" href="mailto:anna@annaurik.com" aria-label="Email anna@annaurik.com">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/>
+        </svg>
+        <span>
+          <span class="contact-label">E-mail</span>
+          anna@annaurik.com
+        </span>
+      </a>
+
+      <a class="contact" href="https://www.instagram.com/anna.urik/" target="_blank" rel="noopener" aria-label="Instagram anna.urik">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        <span>
+          <span class="contact-label">Instagram</span>
+          anna.urik
+        </span>
+      </a>
     </div>
-  </section>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="images">
+    <div class="img-top">
+      <img src="photos/about.jpg" alt="Anna Urik — on set" loading="eager" decoding="async">
+    </div>
+    <div class="img-bottom">
+      <img src="photos/profile.jpg" alt="Anna Urik — portrait" loading="lazy" decoding="async">
+    </div>
+  </div>
+
 </main>
 </body>
 </html>
