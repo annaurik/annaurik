@@ -56,8 +56,22 @@ body{
 .project{
   border-top:1px solid var(--rule);
   padding:clamp(28px,4vw,56px) 0;
+  position:relative;
+  background-size:cover;
+  background-position:center;
+  overflow:hidden;
 }
 .project:last-child{border-bottom:1px solid var(--rule)}
+
+/* cream fade over background image */
+.project::before{
+  content:'';
+  position:absolute;inset:0;
+  background:rgba(246,242,226,0.88);
+  transition:background .4s ease;
+}
+.project:hover::before{background:rgba(246,242,226,0.78)}
+.project a{position:relative;z-index:1}
 
 .project a{
   display:block;
@@ -129,7 +143,7 @@ body{
 
   <ol class="projects">
 
-    <li class="project project--left">
+    <li class="project project--left" style="background-image:url('photos/gg/gg_28.webp')">
       <a href="/gentle-gesture">
         <span class="project-num">01</span>
         <span class="project-name">Gentle Gesture</span>
@@ -137,7 +151,7 @@ body{
       </a>
     </li>
 
-    <li class="project project--right">
+    <li class="project project--right" style="background-image:url('photos/chair/chair_04.webp')">
       <a href="/home-of-the-good-chair">
         <span class="project-num">02</span>
         <span class="project-name">Home of the Good Chair</span>
@@ -145,7 +159,7 @@ body{
       </a>
     </li>
 
-    <li class="project project--left">
+    <li class="project project--left" style="background-image:url('photos/salina/salina_01.webp')">
       <a href="/salina">
         <span class="project-num">03</span>
         <span class="project-name">Salina</span>
