@@ -55,18 +55,19 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
 }
 
 
+
 /* ── Editorial gallery ── */
 .gallery{
-  max-width:1440px;
+  max-width:960px;
   margin:0 auto;
-  padding:clamp(24px,5vw,80px) clamp(24px,5vw,80px) clamp(64px,10vw,140px);
+  padding:clamp(24px,5vw,64px) clamp(24px,5vw,64px) clamp(64px,10vw,120px);
   display:flex;
   flex-direction:column;
-  gap:clamp(32px,5vw,80px);
+  gap:clamp(28px,4vw,64px);
 }
 .row{
   display:grid;
-  gap:clamp(14px,2.5vw,40px);
+  gap:clamp(12px,2vw,28px);
   align-items:start;
 }
 .r-7-5{grid-template-columns:7fr 5fr}
@@ -77,10 +78,10 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
 .r-3  {grid-template-columns:1fr 1fr 1fr}
 .fig{margin:0}
 .fig img{width:100%;height:auto;display:block}
-.center   {max-width:62%;margin:0 auto}
-.center-lg{max-width:78%;margin:0 auto}
-.push-r   {max-width:62%;margin-left:auto}
-.push-l   {max-width:62%;margin-right:auto}
+.center   {max-width:55%;margin:0 auto}
+.center-lg{max-width:75%;margin:0 auto}
+.push-r   {max-width:55%;margin-left:auto}
+.push-l   {max-width:55%;margin-right:auto}
 @media(max-width:700px){
   .r-7-5,.r-5-7,.r-6-6,.r-4-8,.r-8-4{grid-template-columns:1fr}
   .r-3{grid-template-columns:1fr 1fr}
@@ -128,7 +129,7 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
     </div>
 
     <!-- Wide landscape breathes full width -->
-    <figure class="fig">
+    <figure class="fig center-lg">
       <img src="photos/gg/gg_15.webp" alt="" loading="lazy" decoding="async">
     </figure>
 
@@ -151,7 +152,7 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
     </div>
 
     <!-- Landscape full width again -->
-    <figure class="fig">
+    <figure class="fig center-lg">
       <img src="photos/gg/gg_18.webp" alt="" loading="lazy" decoding="async">
     </figure>
 
