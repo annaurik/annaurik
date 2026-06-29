@@ -39,12 +39,10 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
 
 .media-left{background:#222;overflow:hidden}
 .media-left img{width:100%;height:auto;display:block}
-
 .right{display:grid;grid-template-rows:auto auto 1fr;gap:clamp(14px,2.2vw,24px)}
 .case-num{margin:0;color:var(--accent);font-weight:900;font-size:clamp(3.2rem,10vw,8rem);line-height:.9;letter-spacing:.01em}
 .case-title{margin:0;color:var(--accent);font-weight:900;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(2.2rem,6.2vw,4.2rem);line-height:.95}
 .lead{margin:0;color:var(--muted);max-width:58ch;font-size:clamp(1rem,1.35vw,1.15rem);line-height:1.6}
-
 .media-right{background:#222;overflow:hidden;margin-top:clamp(12px,2.4vw,24px)}
 .media-right img{width:100%;height:auto;display:block}
 
@@ -55,28 +53,28 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
   .media-left img,.media-right img{height:100%;object-fit:cover;object-position:center}
 }
 
-
-/* ── Photo grid ── */
-.grid-section{
-  max-width:var(--maxw);margin:0 auto;
-  padding:0 clamp(16px,4vw,32px) clamp(48px,6vw,80px);
+/* ── Editorial gallery ── */
+.gallery{
+  max-width:960px;
+  margin:0 auto;
+  padding:clamp(24px,5vw,64px) clamp(24px,5vw,64px) clamp(64px,10vw,120px);
+  display:flex;
+  flex-direction:column;
+  gap:clamp(28px,4vw,64px);
 }
-.grid{
-  columns:3;
-  column-gap:clamp(8px,1.6vw,16px);
+.row{display:grid;gap:clamp(12px,2vw,28px);align-items:start}
+.r-6-6{grid-template-columns:1fr 1fr}
+.r-7-5{grid-template-columns:7fr 5fr}
+.r-5-7{grid-template-columns:5fr 7fr}
+.fig{margin:0}
+.fig img{width:100%;height:auto;display:block}
+.center   {max-width:72%;margin:0 auto}
+.center-lg{max-width:88%;margin:0 auto}
+.push-r   {max-width:72%;margin-left:auto}
+@media(max-width:700px){
+  .r-6-6,.r-7-5,.r-5-7{grid-template-columns:1fr}
+  .center,.center-lg,.push-r{max-width:100%;margin:0}
 }
-@media (max-width:900px){.grid{columns:2}}
-@media (max-width:500px){.grid{columns:1}}
-
-.grid-cell{
-  break-inside:avoid;
-  margin-bottom:clamp(8px,1.6vw,16px);
-  background:#222;
-  overflow:hidden;
-}
-.grid-cell img{width:100%;height:auto;display:block;transition:transform .4s ease}
-.grid-cell:hover img{transform:scale(1.02)}
-
 
 /* Back to top */
 .btt{
@@ -100,10 +98,10 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
 <main>
   <div class="hero">
     <figure class="media-left">
-      <img src="photos/theatre/theatre_31.webp" alt="Aerial performer — Cirk La Putyka" loading="eager" decoding="async">
+      <img src="photos/theatre/theatre_31.webp" alt="Cirk La Putyka" loading="eager" decoding="async">
     </figure>
     <section class="right">
-      <h2 class="case-num">01</h2>
+      <h2 class="case-num">04</h2>
       <h1 class="case-title">THEATRE</h1>
       <p class="lead">
         With Cirk La Putyka, I explored the space where theatre meets motion — translating live
@@ -111,45 +109,42 @@ body{background:var(--bg);color:var(--fg);font:400 16px/1.5 system-ui,-apple-sys
         the company's digital identity and visual archive.
       </p>
       <figure class="media-right">
-        <img src="photos/theatre/theatre_03.webp" alt="Performers on stage — Cirk La Putyka" loading="lazy" decoding="async">
+        <img src="photos/theatre/theatre_34.webp" alt="Cirk La Putyka" loading="lazy" decoding="async">
       </figure>
     </section>
   </div>
 
-  <div class="grid-section">
-    <div class="grid" role="list">
+  <div class="gallery">
 
-      <div class="grid-cell" role="listitem">
-        <img src="photos/theatre/theatre_32.webp" alt="" loading="lazy" decoding="async">
-      </div>
+    <figure class="fig center-lg">
+      <img src="photos/theatre/theatre_22.webp" alt="" loading="lazy" decoding="async">
+    </figure>
 
-      <div class="grid-cell" role="listitem">
-        <img src="photos/theatre/theatre_25.webp" alt="" loading="lazy" decoding="async">
-      </div>
-      <div class="grid-cell" role="listitem">
-        <img src="photos/theatre/theatre_14.webp" alt="" loading="lazy" decoding="async">
-      </div>
-      <div class="grid-cell" role="listitem">
-        <img src="photos/theatre/theatre_30.webp" alt="" loading="lazy" decoding="async">
-      </div>
-
-      <div class="grid-cell" role="listitem">
-        <img src="photos/theatre/theatre_34.webp" alt="" loading="lazy" decoding="async">
-      </div>
-
-      <div class="grid-cell" role="listitem">
-        <img src="photos/theatre/theatre_26.webp" alt="" loading="lazy" decoding="async">
-      </div>
-      <div class="grid-cell" role="listitem">
-        <img src="photos/theatre/theatre_33.webp" alt="" loading="lazy" decoding="async">
-      </div>
-      <div class="grid-cell" role="listitem">
-        <img src="photos/theatre/theatre_27.webp" alt="" loading="lazy" decoding="async">
-      </div>
-
+    <div class="row r-6-6">
+      <figure class="fig"><img src="photos/theatre/theatre_29.webp" alt="" loading="lazy" decoding="async"></figure>
+      <figure class="fig"><img src="photos/theatre/theatre_30.webp" alt="" loading="lazy" decoding="async"></figure>
     </div>
+
+    <figure class="fig push-r">
+      <img src="photos/theatre/theatre_23.webp" alt="" loading="lazy" decoding="async">
+    </figure>
+
+    <div class="row r-7-5">
+      <figure class="fig"><img src="photos/theatre/theatre_32.webp" alt="" loading="lazy" decoding="async"></figure>
+      <figure class="fig"><img src="photos/theatre/theatre_33.webp" alt="" loading="lazy" decoding="async"></figure>
+    </div>
+
+    <figure class="fig center">
+      <img src="photos/theatre/theatre_35.webp" alt="" loading="lazy" decoding="async">
+    </figure>
+
+    <figure class="fig center-lg">
+      <img src="photos/theatre/theatre_36.webp" alt="" loading="lazy" decoding="async">
+    </figure>
+
   </div>
 </main>
+
 <a class="btt" href="#top" aria-label="Back to top" id="btt">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="18 15 12 9 6 15"/>
