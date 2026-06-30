@@ -60,35 +60,25 @@
     .hero{
       min-height:100svh;
       display:grid;
-      grid-template-columns:0.42fr 0.58fr;
+      grid-template-columns:1fr;
       position:relative;
       isolation:isolate;
     }
     .panel{position:relative;overflow:hidden}
+    .panel--left{display:none}
     .panel img.bg{
       position:absolute;inset:0;
-      width:100%;height:100%;
-      object-fit:cover;object-position:center;
-      transform:scale(1.05);
+      width:133%;height:100%;
+      right:0;left:auto;
+      object-fit:cover;object-position:right center;
+      filter:brightness(.70) contrast(1.05);
     }
 
-    /* Left panel overlay */
-    .panel--left::after{
-      content:"";position:absolute;inset:0;
-      background:radial-gradient(120% 100% at 20% 50%,#00000066 20%,#000000a6 70%);
-      pointer-events:none;
-    }
-
-    /* Right panel */
-    .panel--right::before{
-      content:"";position:absolute;left:0;right:0;top:3.2rem;
-      height:1px;background:var(--hairline);z-index:2;
-    }
+    /* Right panel scrim */
     .panel--right::after{
       content:"";position:absolute;inset:0;
-      background:rgba(0,0,0,0.42);z-index:1;pointer-events:none;
+      background:rgba(0,0,0,0.38);z-index:1;pointer-events:none;
     }
-    .panel--right .bg{filter:brightness(.70) contrast(1.05)}
 
     /* Content */
     .content{
@@ -142,10 +132,6 @@
 </nav>
 
 <main class="hero" aria-label="About Anna Urik">
-
-  <section class="panel panel--left" aria-hidden="true">
-    <img class="bg" src="photos/about.jpg" alt="" loading="lazy" decoding="async">
-  </section>
 
   <section class="panel panel--right">
     <img class="bg" src="photos/profile.jpg" alt="" loading="eager" decoding="async">
