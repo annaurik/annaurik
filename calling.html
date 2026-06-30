@@ -190,4 +190,11 @@ html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);
   next.addEventListener('click', function(){ if(cur<total-1) go(cur+1); });
   document.addEventListener('keydown', function(e){
     if(e.key==='ArrowRight' && cur<total-1) go(cur+1);
-    if(e.key==='A
+    if(e.key==='ArrowLeft' && cur>0) go(cur-1);
+  });
+  document.getElementById('total').textContent = pad(total);
+  fill.style.width = (1/total*100)+'%';
+})();
+</script>
+</body>
+</html>
